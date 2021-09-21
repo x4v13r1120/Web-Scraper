@@ -1,5 +1,4 @@
 import json
-import pandas as pd
 
 txlist = {
     "blockNumber",
@@ -22,8 +21,11 @@ txlist = {
     "confirmations"
 }
 
-with open("cleaned_data.json") as infile:
-    txlist = json.load(infile)
+def transform():
+    with open("cleaned_data.json") as infile:
+        txlist = json.load(infile)
+        print(txlist)
+
 
 
 
