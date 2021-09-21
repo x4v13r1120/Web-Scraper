@@ -42,12 +42,12 @@ def extract():
     address_content = response.json()
     result = address_content.get("result")
     # dump data
-    with open("jsondata.json", "w") as outfile:
+    with open("data/jsondata.json", "w") as outfile:
         json.dump(result, outfile)
 
     # starting cleaning process
     comment = False
-    with open("jsondata.json", 'r') as infile, open("cleaned_data.json", 'w') as \
+    with open("data/jsondata.json", 'r') as infile, open("data/cleaned_data.json", 'w') as \
             outfile:
         for line in infile:
             if line.startswith("/*"):

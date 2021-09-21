@@ -22,7 +22,7 @@ txlist = {
 }
 
 def transform():
-    with open("cleaned_data.json") as infile:
+    with open("data/cleaned_data.json") as infile:
         txlist = json.load(infile)
         print(txlist)
 
