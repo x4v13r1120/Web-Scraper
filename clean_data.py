@@ -1,7 +1,7 @@
 import json
 
 comment = False
-with open("../data/jsondata.json", 'r') as infile, open("../data/cleaned_data.json", 'w') as \
+with open("jsondata.json", 'r') as infile, open("cleaned_data.json", 'w') as \
         outfile:
     for line in infile:
         if line.startswith("/*"):

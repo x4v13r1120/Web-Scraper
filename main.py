@@ -2,7 +2,7 @@ from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup
 
-from ETL.extract_data import json_parser
+from extract_data import json_parser
 
 address = "0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a"
 api_url_test1 = "http://api.etherscan.io/api?module=account&action=balance&address=0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae&tag=latest&apikey=F6KD4YVEAVT9P6M2U3TPCGZCXT4PRQG4U9"
