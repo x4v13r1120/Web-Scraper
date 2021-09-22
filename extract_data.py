@@ -8,15 +8,25 @@ address = str(input("Please enter Ether Address.")) # 0xde0b295669a9fd93d5f28d9e
 tag = str(input("Please enter tag."))  # latest
 
 commandList = {
-    0: command.command0(command.api_key, command.module[0], command.website, action, address, tag),  # Get Ether
+    0: command.command0(command.api_key, command.module[0], command.website,
+                        action, address, tag),  # Get Ether
     # Balance for a Single Address
-    1: command.command1(command.api_key, command.module[0], command.website, action, address, tag),  # Get Ether
+
+    1: command.command1(command.api_key, command.module[0], command.website,
+                        action, address, tag),  # Get Ether
     # Balance for Multiple Addresses in a Single Call
+
+    2: command.command2(command.api_key,command.website,command.module[0],
+                        action, address, startBlock = 0, endBlock = 99999999,
+                        page = 1, offset = 10,sort = "asc") # Get a list of
+    # 'Normal' Transactions By Address
+
+
 }
 
 def extract():
     # make request using command
-    response = requests.get(commandList[0])
+    response = requests.get(commandList[2])
     address_content = response.json()
     result = address_content.get("result")
     # dump data

@@ -45,7 +45,8 @@ class command:
 
     # Get a list of 'Normal' Transactions By Address
     @staticmethod
-    def command2(api_key, website, module, action, address, startBlock, endBlock, page, offset, sort):
+    def command2(api_key, website, module, action, address, startBlock,
+                 endBlock, page, offset, sort):
         website = command.website
         apikey = command.api_key
         action = action
@@ -56,6 +57,9 @@ class command:
         page = 1
         offset = 10
         sort = "asc"
+        return f"{website}&module={module}&action={action}&address={address}" \
+               f"&startblock={startBlock}&endblock={endBlock}&page={page}" \
+               f"&offset={offset}&sort={sort}&apikey={api_key}"
 
     @staticmethod
     # get a list of 'internal transactions by address'
