@@ -45,7 +45,7 @@ class command:
 
     # Get a list of 'Normal' Transactions By Address
     @staticmethod
-    def command2(api_key, website, module, action, address, startBlock, endBlock, page, offset, sort):
+    def command2(api_key, website, module, action, address):
         website = command.website
         apikey = command.api_key
         action = action
@@ -62,7 +62,7 @@ class command:
 
     @staticmethod
     # get a list of 'internal transactions by address'
-    def command3(api_key, website, module, action, address, startBlock, endBlock, page, offset, sort):
+    def command3(api_key, website, module, action, address):
         website = command.website
         apikey = command.api_key
         module = command.module[0]
@@ -89,7 +89,7 @@ class command:
 
     @staticmethod
     # get "internal transactions" by block range
-    def command5(apikey, website, module, action, startBlock, endBlock, page, offset, sort):
+    def command5(apikey, website, module, action):
         website = command.website
         module = command.module[0]
         apikey = command.api_key
