@@ -4,7 +4,7 @@ from commands import command
 
 action = str(input("Please enter action you'd like to perform."))  # balance, balancemulti, txlist, txlistinternal,
 # tokentx, tokennfttx, getminedblocks, balancehistory,
-address = str(input("Please enter Ether Address.")) # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+address = str(input("Please enter Ether Address."))  # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
 tag = str(input("Please enter tag."))  # latest
 
 commandList = {
@@ -16,13 +16,25 @@ commandList = {
                         action, address, tag),  # Get Ether
     # Balance for Multiple Addresses in a Single Call
 
-    2: command.command2(command.api_key,command.website,command.module[0],
-                        action, address, startBlock = 0, endBlock = 99999999,
-                        page = 1, offset = 10,sort = "asc") # Get a list of
+    2: command.command2(command.api_key, command.website, command.module[0],
+                        action, address, startBlock=0, endBlock=99999999,
+                        page=1, offset=10, sort="asc"),  # Get a list of
     # 'Normal' Transactions By Address
 
+    3: command.command3(command.api_key, command.website, command.module[0],
+                        action, address, startBlock=0, endBlock=99999999,
+                        page=1, offset=10, sort="asc"), # get a list of 'internal transactions by address'
+
+    4: command.command4(command.api_key, command.website, command.module[0],action,
+                        txhash= 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170),
+    # Get 'Internal Transactions' by Transaction Hash
+
+    5:  command.command5(command.api_key, command.website, command.module[0], action,
+                         startBlock = 0, endBlock = 99999999, page = 1, offset = 10, sort="asc"), # get
+    # "internal transactions" by block range
 
 }
+
 
 def extract():
     # make request using command
@@ -49,4 +61,4 @@ def extract():
             if len(line.strip()) > 0:
                 if not line.strip().startswith("//"):
                     if not comment:
-                        outfile.write(f"{line}")
+                        outfile.write(f"{line}\n")

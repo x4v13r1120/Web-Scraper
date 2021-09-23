@@ -45,8 +45,7 @@ class command:
 
     # Get a list of 'Normal' Transactions By Address
     @staticmethod
-    def command2(api_key, website, module, action, address, startBlock,
-                 endBlock, page, offset, sort):
+    def command2(api_key, website, module, action, address, startBlock, endBlock, page, offset, sort):
         website = command.website
         apikey = command.api_key
         action = action
@@ -74,19 +73,23 @@ class command:
         page = 1
         offset = 10
         sort = "asc"
+        return f"{website}&module={module}&action={action}&address={address}" \
+               f"&startblock={startBlock}&endblock={endBlock}&page={page}" \
+               f"&offset={offset}&sort={sort}&apikey={api_key}"
 
     @staticmethod
     # Get 'Internal Transactions' by Transaction Hash
-    def command5(apikey, website, module, action, txhash):
+    def command4(apikey, website, module, action, txhash):
         website = website
         apikey = command.api_key
         action = action
         module = command.module[0]
         txhash = txhash
+        return  f"{website}&module={module}&action={action}&txhash={txhash}&apikey={apikey}"
 
     @staticmethod
     # get "internal transactions" by block range
-    def command6(apikey, website, module, action, startBlock, endBlock, page, offset, sort):
+    def command5(apikey, website, module, action, startBlock, endBlock, page, offset, sort):
         website = command.website
         module = command.module[0]
         apikey = command.api_key
@@ -96,6 +99,8 @@ class command:
         page = 1
         offset = 10
         sort = "asc"
+        return f"{website}&module={module}&action={action}&startblock={startBlock}&endblock={endBlock}&page={page}" \
+               f"&offset={offset}&sort={sort}&apikey={apikey}"
 
 
 """
