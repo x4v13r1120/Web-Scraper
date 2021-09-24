@@ -4,7 +4,6 @@ from commands import commands, getEthAdress, getContractAdress, getTxHash, getBl
 
 def userinput():
 
-
     passthrough = ""
 
     module_choice = int(input(f"What module do u wish to utilize:\n1.{commands.module[0]}\n2.{commands.module[1]}\n"
@@ -30,30 +29,33 @@ def userinput():
                   f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
                   f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
                   f"8.{conversion_dict[7]}\n9.{conversion_dict[0]}\n"))
+        ethaddress = getEthAdress()
+        txhash = getTxHash()
+        contractaddress = getContractAdress()
         accountCommandsList = {
-            0: commands.accountCommand0(getEthAdress()),  # Get Ether Balance for a Single Address
+            0: commands.accountCommand0(ethaddress),  # Get Ether Balance for a Single Address
 
-            1: commands.accountCommand1(getEthAdress()),
+            1: commands.accountCommand1(ethaddress),
             # Get Ether Balance for Multiple Addresses in a Single Call
 
-            2: commands.accountCommand2(getEthAdress()),
+            2: commands.accountCommand2(ethaddress),
             # Get a list of'Normal' Transactions By Address
 
-            3: commands.accountCommand3(getEthAdress()),
+            3: commands.accountCommand3(ethaddress),
             # get a list of 'internal transactions by address'
 
-            4: commands.accountCommand4(getEthAdress()),
+            4: commands.accountCommand4(txhash),
             # Get 'Internal Transactions' by Transaction Hash
 
             5: commands.accountCommand5(),  # get "internal transactions" by block range
 
-            6: commands.accountCommand6(getEthAdress(), getContractAdress()),
+            6: commands.accountCommand6(ethaddress, contractaddress),
             # Get a list of 'ERC20 - Token Transfer Events' by Address
 
-            7: commands.accountCommand7(getEthAdress(), getContractAdress()),
+            7: commands.accountCommand7(ethaddress, contractaddress),
             # Get a list of 'ERC721 - Token Transfer Events' by Address
 
-            8: commands.accountCommand8(getEthAdress())  # Get list of Blocks Mined by Address
+            8: commands.accountCommand8(ethaddress)  # Get list of Blocks Mined by Address
         }
         return accountCommandsList.get(command_choice-1)
     elif module_choice == 2:
@@ -64,11 +66,12 @@ def userinput():
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
                   f"2.{conversion_dict[1]}\n"))
+        ethaddress = getEthAdress()
         contractCommandsList = {
-            0: commands.contractCommand0(commands.getEthAdress()),
+            0: commands.contractCommand0(ethaddress),
             # Get Contract ABI for Verified Contract Source Code
 
-            1: commands.contractCommand1(commands.getEthAdress())  # Get Contract Source Code for Verified
+            1: commands.contractCommand1(ethaddress)  # Get Contract Source Code for Verified
             # Contract Source Codes
         }
         passthrough = contractCommandsList.get(command_choice-1)
@@ -80,10 +83,11 @@ def userinput():
         command_choice = int(
             input(f"which command you like to use:\n1.{coversion_dict[0]}\n"
                   f"2.{coversion_dict[1]}\n"))
+        txhash = getTxHash()
         transactionCommandsList = {
-            0: commands.transactionCommand0(commands.getTxHash()),
+            0: commands.transactionCommand0(txhash),
             # Check Contract Execution Status
-            1: commands.transactionCommand1(commands.getTxHash())
+            1: commands.transactionCommand1(txhash)
             # Check Transaction Receipt Status
         }
         passthrough = transactionCommandsList.get(command_choice-1)
