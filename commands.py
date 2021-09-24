@@ -23,50 +23,64 @@ class commands:
 ### START OF ACCOUNT MODULE COMMANDS ###
     # Get Ether Balance for a Single Address
     @staticmethod
-    def accountCommand0(address):
+    def accountCommand0():
         action = "balance"
         tag = "latest"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}" \
                f"&action={action}&address={address}&tag={tag}&apikey={commands.api_key}"
 
     # Get Ether Balance for Multiple Addresses in a Single Call
     @staticmethod
-    def accountCommand1(address):
+    def accountCommand1():
         action = "balancemulti"
         tag = "latest"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}" \
                f"&action={action}&address={address}&tag={tag}&apikey={commands.api_key}"
 
     # Get a list of 'Normal' Transactions By Address
     @staticmethod
-    def accountCommand2(address):
+    def accountCommand2():
         action = "txlist"
         start_block = 0
         end_block = 99999999
         page = 1
         offset = 10
         sort = "asc"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}&action={action}&address={address}" \
                f"&startblock={start_block}&endblock={end_block}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # get a list of 'internal transactions by address'
     @staticmethod
-    def accountCommand3(address):
+    def accountCommand3():
         action = "txlistinternal"
         start_block = 0
         end_block = 99999999
         page = 1
         offset = 10
         sort = "asc"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}&action={action}&address={address}" \
                f"&startblock={start_block}&endblock={end_block}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # Get 'Internal Transactions' by Transaction Hash
     @staticmethod
-    def accountCommand4(txhash):
+    def accountCommand4():
         action = "txlistinternal"
+        txhash = str(input(
+            "Please enter txhash Address."))  # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
         return f"{commands.website}&module={commands.module[0]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
@@ -85,51 +99,67 @@ class commands:
 
     # Get a list of 'ERC20 - Token Transfer Events' by Address
     @staticmethod
-    def accountCommand6(address):
+    def accountCommand6():
         action = "tokentx"
         page = 1
         offset = 100
         sort = "asc"
         contractaddress = "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}&action={action}" \
                f"&=contractaddress={contractaddress}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # Get a list of 'ERC721 - Token Transfer Events' by Address
     @staticmethod
-    def accountCommand7(address):
+    def accountCommand7():
         action = "tokennfttx"
         contractaddress = "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2"
         page = 1
         offset = 100
         sort = "asc"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[0]}&action={action}" \
                f"&=contractaddress={contractaddress}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # Get list of Blocks Mined by Address
     @staticmethod
-    def accountCommand8(address):
+    def accountCommand8():
         action = "getminedblocks"
         blocktype = "blocks"
         page = 1
         offset = 100
-        return f"{commands.website}&module={commands.module[0]}&action={action}&=blocktype={blocktype}&page={page}" \
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        return f"{commands.website}&module={commands.module[0]}&action={action}" \
+               f"&address={address}&=blocktype={blocktype}&page={page}" \
                f"&offset={offset}&apikey={commands.api_key}"
 
 ### START OF CONTRACT MODULE COMMANDS ###
 
 # Get Contract ABI for Verified Contract Source Code
     @staticmethod
-    def contractCommand0(address):
+    def contractCommand0():
         action = "getabi"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[1]}" \
                f"&action={action}&address={address}&apikey={commands.api_key}"
 
 # Get Contract Source Code for Verified Contract Source Codes
     @staticmethod
-    def contractCommand1(address):
+    def contractCommand1():
         action = "getsourcecode"
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         return f"{commands.website}&module={commands.module[1]}" \
                f"&action={action}&address={address}&apikey={commands.api_key}"
 
@@ -137,16 +167,21 @@ class commands:
 
 #Check Contract Execution Status
     @staticmethod
-    def transactionCommand0(txhash):
+    def transactionCommand0():
         action = "getstatus"
+        txhash = str(input(
+            "Please enter txhash Address."))  #
+        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
         return f"{commands.website}&module={commands.module[2]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
 # Check Transaction Receipt Status
     @staticmethod
-    def transactionCommand1(txhash):
+    def transactionCommand1():
         action = "gettxreceiptstatus"
-        txhash = txhash
+        txhash = str(input(
+            "Please enter txhash Address."))  #
+        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
         return f"{commands.website}&module={commands.module[2]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
@@ -154,23 +189,29 @@ class commands:
 
 # Get Block And Uncle Rewards by BlockNo
     @staticmethod
-    def blockCommand0(blockno):
+    def blockCommand0():
         action = "getblockreward"
+        blockno = int(input(
+            "Please enter block number."))  # 2165403
         return f"{commands.website}&module={commands.module[3]}" \
-               f"&action={action}&blockno={blocko}&apikey={commands.api_key}"
+               f"&action={action}&blockno={blockno}&apikey={commands.api_key}"
 
 # Get Estimated Block Countdown Time by BlockNo
     @staticmethod
-    def blockCommand1(blockno):
+    def blockCommand1():
         action = "getblockcountdown"
+        blockno = int(input(
+            "Please enter block number."))  # 2165403
         return f"{commands.website}&module={commands.module[3]}" \
                f"&action={action}&blockno={blockno}&apikey={commands.api_key}"
 
 # Get Block Number by Timestamp
     @staticmethod
-    def blockCommand2(timestamp):
+    def blockCommand2():
         action = "getblocknobytime"
         closest = "before"
+        timestamp = int(input(
+            "Please enter timestamp."))  # 1578638524
         return f"{commands.website}&module={commands.module[3]}&action={action}" \
                f"&timestamp={timestamp}&closest={closest}&apikey={commands.api_key}"
 
