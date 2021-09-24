@@ -7,17 +7,6 @@ module_choice = int(input(f"What module do u wish to utilize:\n1.{commands.modul
                       f"6.{commands.module[5]}\n7.{commands.module[6]}\n8.{commands.module[7]}\n"
                       f"9.{commands.module[8]}\n"))
 
-address = str(input(
-            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-txhash = str(input(
-            "Please enter Transaction Hash."))  # address for testing =
-        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
-contractAddress = str(input(
-            "Please enter Contract address."))  # address for testing = 0x06012c8cf97bead5deae237070f9587f8e7a266d
-blockno = int(input(
-            "Please enter block."))  # block for testing = 216540
-timestamp = int(input(
-    "Please enter timestamp.")) # timestamp for testing 1578638524
 
 passthrough = ""
 
