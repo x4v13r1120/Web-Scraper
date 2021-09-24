@@ -120,6 +120,7 @@ def extract():
                 if not line.strip().startswith("//"):
                     if not comment:
                         outfile.write(f"{line}\n")
+                        print("Data has been extracted and cleaned!!!")
 
 
 
