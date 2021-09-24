@@ -84,7 +84,7 @@ class commands:
 
     # Get a list of 'ERC20 - Token Transfer Events' by Address
     @staticmethod
-    def accountCommand6(address):
+    def accountCommand6(address, contractaddress):
         action = "tokentx"
         page = 1
         offset = 100
@@ -96,7 +96,7 @@ class commands:
 
     # Get a list of 'ERC721 - Token Transfer Events' by Address
     @staticmethod
-    def accountCommand7(address):
+    def accountCommand7(address,contractaddress):
         action = "tokennfttx"
         contractaddress = "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2"
         page = 1
