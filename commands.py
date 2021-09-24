@@ -207,13 +207,13 @@ def getTxHash():
 
 def getContractAdress():
     contractaddress = str(input(
-        "Please enter contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
     return contractaddress
 
 def getBlockNo():
-    blockno = int(input("Please enter block."))  # block for testing = 216540
+    blockno = int(input("Please enter Block Number."))  # block for testing = 216540
     return blockno
 
 def getTimeStamp():
-    timestamp = int(input("Please enter timestamp."))  # timestamp for testing 1578638524
+    timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
     return timestamp
