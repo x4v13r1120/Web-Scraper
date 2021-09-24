@@ -91,7 +91,7 @@ class commands:
         sort = "asc"
         contractaddress = "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2"
         return f"{commands.website}&module={commands.module[0]}&action={action}" \
-               f"&=contractaddress={contractaddress}&page={page}" \
+               f"&=contractaddress={contractaddress}&=address{address}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # Get a list of 'ERC721 - Token Transfer Events' by Address
@@ -103,7 +103,7 @@ class commands:
         offset = 100
         sort = "asc"
         return f"{commands.website}&module={commands.module[0]}&action={action}" \
-               f"&=contractaddress={contractaddress}&page={page}" \
+               f"&=contractaddress={contractaddress}&address{address}&page={page}" \
                f"&offset={offset}&sort={sort}&apikey={commands.api_key}"
 
     # Get list of Blocks Mined by Address
