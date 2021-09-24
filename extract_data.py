@@ -9,7 +9,7 @@ module_choice = int(input(f"What module do u wish to utilize:\n1.{commands.modul
 
 address = str(input(
             "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-txHash = str(input(
+txhash = str(input(
             "Please enter Transaction Hash."))  # address for testing =
         # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
 contractAddress = str(input(
@@ -20,6 +20,44 @@ timestamp = int(input(
     "Please enter timestamp.")) # timestamp for testing 1578638524
 
 passthrough = ""
+
+accountCommandsList = {
+    "etherBalanceSingle": commands.accountCommand0(address),  # Get Ether Balance for a Single Address
+
+    "etherBalanceMultiple": commands.accountCommand1(address),  # Get Ether Balance for Multiple Addresses in a Single Call
+
+    "listNormalTransactions": commands.accountCommand2(address),  # Get a list of'Normal' Transactions By Address
+
+    "listInternalTransactions": commands.accountCommand3(address),  # get a list of 'internal transactions by address'
+
+    "txhashInternalTransactions": commands.accountCommand4(txhash),
+    # Get 'Internal Transactions' by Transaction Hash
+
+    "blockRangeInternalTx": commands.accountCommand5(),  # get "internal transactions" by block range
+
+    "listErc20Transfer": commands.accountCommand6(address,contractAddress), # Get a list of 'ERC20 - Token Transfer Events' by Address
+
+    "listErc721Transfer": commands.accountCommand7(address,contractAddress), # Get a list of 'ERC721 - Token Transfer Events' by Address
+
+    "listBlocksMined": commands.accountCommand8(address), # Get list of Blocks Mined by Address
+
+}
+contractCommandsList = {
+    "getAbiContract": commands.contractCommand0(address), # Get Contract ABI for Verified Contract Source Code
+
+    "getContractSource": commands.contractCommand1(address) # Get Contract Source Code for Verified
+    # Contract Source Codes
+}
+transactionCommandsList = {
+    "checkContractStatus": commands.transactionCommand0(txhash), #Check Contract Execution Status
+    "checkTransactionStatus":commands.transactionCommand1(txhash) # Check Transaction Receipt Status
+}
+
+module_command_list = [
+    accountCommandsList,
+    contractCommandsList,
+    transactionCommandsList
+]
 
 if module_choice == 1:
     command_choice = int(input(f"which command you like to use:\n1.{list(accountCommandsList.keys())[0]}\n"
@@ -55,45 +93,6 @@ elif module_choice == 3:
         1: "checkTransactionStatus",
     }
     passthrough = module_command_list[module_choice - 1][coversion_dict[command_choice - 1]]
-
-accountCommandsList = {
-    "etherBalanceSingle": commands.accountCommand0(address),  # Get Ether Balance for a Single Address
-
-    "etherBalanceMultiple": commands.accountCommand1(address),  # Get Ether Balance for Multiple Addresses in a Single Call
-
-    "listNormalTransactions": commands.accountCommand2(address),  # Get a list of'Normal' Transactions By Address
-
-    "listInternalTransactions": commands.accountCommand3(address),  # get a list of 'internal transactions by address'
-
-    "txhashInternalTransactions": commands.accountCommand4(txHash),
-    # Get 'Internal Transactions' by Transaction Hash
-
-    "blockRangeInternalTx": commands.accountCommand5(),  # get "internal transactions" by block range
-
-    "listErc20Transfer": commands.accountCommand6(address,contractAddress), # Get a list of 'ERC20 - Token Transfer Events' by Address
-
-    "listErc721Transfer": commands.accountCommand7(address,contractAddress), # Get a list of 'ERC721 - Token Transfer Events' by Address
-
-    "listBlocksMined": commands.accountCommand8(address), # Get list of Blocks Mined by Address
-
-}
-contractCommandsList = {
-    "getAbiContract": commands.contractCommand0(address), # Get Contract ABI for Verified Contract Source Code
-
-    "getContractSource": commands.contractCommand1(address) # Get Contract Source Code for Verified
-    # Contract Source Codes
-}
-transactionCommandsList = {
-    "checkContractStatus": commands.transactionCommand0(txhash), #Check Contract Execution Status
-    "checkTransactionStatus":commands.transactionCommand1(txhash) # Check Transaction Receipt Status
-}
-
-module_command_list = [
-    accountCommandsList,
-    contractCommandsList,
-    transactionCommandsList
-]
-
 
 def extract():
     # make request using command
