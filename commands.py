@@ -223,11 +223,13 @@ class commands:
     # where log address = 0x33990122638b9132ca29c723bdf037f1a891a70c
     # and topic[0] = 0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545
     @staticmethod
-    def logCommand0(address):
+    def logCommand0():
         action = "getLogs"
         fromBlock = 379224
         toBlock = "latest"
-        address = address
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing =
+        # 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545" #test hash
         return f"{commands.website}&module={commands.module[4]}&action={action}&fromBlock={fromBlock}" \
                f"&toBlock={toBlock}&address={address}&topic0={topic0}&apikey={commands.api_key}"
