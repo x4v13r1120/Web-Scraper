@@ -1,6 +1,6 @@
 import json
 import requests
-from commands import commands, getEthAdress, getContractAdress, getTxHash, getBlockNo, getTimeStamp
+from commands import commands, getEthAdress, getContractAdress, getTxHash, getBlockNo, getTimeStamp, getTag
 
 def userinput():
 
@@ -126,8 +126,55 @@ def userinput():
             1: commands.logCommand1(ethaddress)
         }
         passthrough = logCommandsList.get(command_choice - 1)
+    elif module_choice == 6:
+        conversion_dict = {
+            0: "GetMostRecentBlock",
+            1: "GetBlockByNumber",
+            2: "GetUncleByBlockAndIndex",
+            3: "GetBlockTransactionCountByNumber",
+            4: "GetTransactionByHash",
+            5: "GetTransactionByBlockNumberAndIndex",
+            6: "GetTransactionCount",
+            7: "GetRawTransaction",
+            8: "getTransactionReceipt",
+            9: "getCall",
+            10: "getCall",
+            11: "GetCode",
+            12: "GetStorageAt",
+            13: "getGasPrice",
+            14: "getEstimatedGas",
+        }
+        command_choice = int(
+            input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                  f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n"
+                  f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
+                  f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
+                  f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n"
+                  f"10.{conversion_dict[9]}\n11.{conversion_dict[10]}\n"
+                  f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n"
+                  f"14.{conversion_dict[13]}\n"))
 
+        #ethaddress = getEthAdress()
+        tag = getTag()
+        proxyCommandsList = {
+            0: commands.proxyCommand0(),
+            1: commands.proxyCommand1(tag),
+            2: commands.proxyCommand2(tag),
+            3: commands.proxyCommand3(tag)#,
+ #          4: commands.proxyCommand4(),
+  #          5: commands.proxyCommand5(),
+   #         6: commands.proxyCommand6(),
+    #        7: commands.proxyCommand7(),
+     #       8: commands.proxyCommand8(),
+      #      9: commands.proxyCommand9(),
+       #     10: commands.proxyCommand10(),
+        #    11: commands.proxyCommand11(),
+         #  13: commands.proxyCommand13(),
+          #  14: commands.proxyCommand14()
+        }
+        passthrough = proxyCommandsList.get(command_choice - 1)
     return passthrough
+
 
 def extract():
     # make request using command

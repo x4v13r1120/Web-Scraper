@@ -202,7 +202,41 @@ class commands:
                f"&toBlock={toBlock}&address={address}&topic0={topic0}" \
                f"&topic0_1_opr={topic0_1_opr}&topic1={topic1}&apikey={commands.api_key}"
 
-### START OF GETH/PARITY/PROXY MODULE COMMANDS ###
+### START OF GETH/PARITY/PROXY MODULE COMMANDS ###5
+
+    # Returns the number of most recent block
+    @staticmethod
+    def proxyCommand0():
+        action = "eth_blockNumber"
+        return f"{commands.website}&module={commands.module[5]}&action={action}&apikey={commands.api_key}"
+
+    # Returns information about a block by block number.
+    @staticmethod
+    def proxyCommand1(tag):
+        action = "eth_getBlockByNumber"
+        #tag = 0x10d4f
+        boolean = 'true'
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean} " \
+               f"&apikey={commands.api_key}"
+
+    # Returns information about a uncle by block number.
+    @staticmethod
+    def proxyCommand2(tag):
+        action = "eth_getUncleByBlockNumberAndIndex"
+        index = 0x5
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&index={index} " \
+               f"&apikey={commands.api_key}"
+
+    @staticmethod
+    def proxyCommand3(tag):
+        action = "eth_getBlockTransactionCountByNumber"
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&apikey={commands.api_key}"
+
+    @staticmethod
+    def proxyCommand4():
+        action = "eth_getTransactionByHash"
+        txhash = 0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1
+
 ### START OF TOKENS MODULE COMMANDS ###
 ### START OF GAS TRACKER MODULE COMMANDS ###
 ### START OF STATS MODULE COMMANDS ###
@@ -214,6 +248,11 @@ def getEthAdress():
     address = str(input(
         "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
     return address
+
+def getTag():
+    tag = str(input(
+        "Please enter the tag."))  # tag for testing = 0x10d4f
+    return tag
 
 def getTxHash():
     txhash = str(input(
