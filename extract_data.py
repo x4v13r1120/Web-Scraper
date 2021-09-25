@@ -91,6 +91,41 @@ def userinput():
             # Check Transaction Receipt Status
         }
         passthrough = transactionCommandsList.get(command_choice-1)
+    elif module_choice == 4:
+        coversion_dict = {
+            0: "GetBlockRewards",
+            1: "GetEstimatedBlockCountdown",
+            2: "GetBlockNumber"
+        }
+        command_choice = int(
+            input(f"which command you like to use:\n1.{coversion_dict[0]}\n"
+                  f"2.{coversion_dict[1]}\n3.{coversion_dict[2]}"))
+        blockno = getBlockNo()
+        timestamp = getTimeStamp()
+        blockCommandsList = {
+            0: commands.blockCommand0(blockno),
+            # Get Block And Uncle Rewards by BlockNo
+            1: commands.blockCommand1(blockno),
+            # Get Estimated Block Countdown Time by BlockNo
+            2: commands.blockCommand2(timestamp)
+            # Get Block Number by Timestamp
+        }
+        passthrough = blockCommandsList.get(command_choice-1)
+    elif module_choice == 5:
+        coversion_dict = {
+            0: "GetEventLogs",
+            1: "GetEventLogsBetweenBlocks"
+        }
+        command_choice = int(
+            input(f"which command you like to use:\n1.{coversion_dict[0]}\n"
+                  f"2.{coversion_dict[1]}\n"))
+        ethaddress = getEthAdress()
+        logCommandsList = {
+            0: commands.logCommand0(ethaddress),
+            # Get Block And Uncle Rewards by BlockNo
+            1: commands.logCommand1(ethaddress)
+        }
+        passthrough = logCommandsList.get(command_choice - 1)
 
     return passthrough
 

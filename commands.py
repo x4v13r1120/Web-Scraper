@@ -186,6 +186,22 @@ class commands:
         return f"{commands.website}&module={commands.module[4]}&action={action}&fromBlock={fromBlock}" \
                f"&toBlock={toBlock}&address={address}&topic0={topic0}&apikey={commands.api_key}"
 
+    #Get Event Logs from block number 379224 to block 400000 ,
+    # where log address = 0x33990122638b9132ca29c723bdf037f1a891a70c,
+    # topic[0] = 0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545
+    # 'AND' topic[1] = 0x72657075746174696f6e00000000000000000000000000000000000000000000
+    @staticmethod
+    def logCommand1(address):
+        action = "getLogs"
+        fromBlock = 379224
+        toBlock = "latest"
+        topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545" # test hash
+        topic0_1_opr = "and"
+        topic1 = "0x72657075746174696f6e00000000000000000000000000000000000000000000"
+        return f"{commands.website}&module={commands.module[4]}&action={action}&fromBlock={fromBlock}" \
+               f"&toBlock={toBlock}&address={address}&topic0={topic0}" \
+               f"&topic0_1_opr={topic0_1_opr}&topic1={topic1}&apikey={commands.api_key}"
+
 ### START OF GETH/PARITY/PROXY MODULE COMMANDS ###
 ### START OF TOKENS MODULE COMMANDS ###
 ### START OF GAS TRACKER MODULE COMMANDS ###
