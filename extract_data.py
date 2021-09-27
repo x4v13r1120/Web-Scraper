@@ -138,11 +138,10 @@ def userinput():
             7: "GetRawTransaction",
             8: "getTransactionReceipt",
             9: "getCall",
-            10: "getCall",
-            11: "GetCode",
-            12: "GetStorageAt",
-            13: "getGasPrice",
-            14: "getEstimatedGas",
+            10: "GetCode",
+            11: "GetStorageAt",
+            12: "getGasPrice",
+            13: "getEstimatedGas",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -151,28 +150,72 @@ def userinput():
                   f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
                   f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n"
                   f"10.{conversion_dict[9]}\n11.{conversion_dict[10]}\n"
-                  f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n"
-                  f"14.{conversion_dict[13]}\n"))
+                  f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n"))
 
-        #ethaddress = getEthAdress()
+        ethaddress = getEthAdress()
         tag = getTag()
+
+#        if command_choice == 1 or command_choice == 2 or command_choice == 3 or command_choice == 5 or command_choice == 9:
+#            tag = getTag()
+#        elif command_choice == 6 or command_choice == 10 or command_choice == 11:
+#            ethaddress = getEthAdress()
+
+#        if command_choice == 1:
+#            passthrough = commands.proxyCommand0()
+#        elif command_choice == 2:
+#            tag = getTag()
+#            passthrough = commands.proxyCommand1(tag)
+#        elif command_choice == 3:
+#            tag = getTag()
+#            passthrough = commands.proxyCommand2(tag)
+#        elif command_choice == 4:
+#            tag = getTag()
+#            passthrough = commands.proxyCommand3(tag)
+#        elif command_choice == 5:
+#            passthrough = commands.proxyCommand4()
+#        elif command_choice == 6:
+#            tag = getTag()
+#            passthrough = commands.proxyCommand5(tag)
+#        elif command_choice == 7:
+#            ethaddress = getEthAdress()
+#            tag = getTag()
+#            passthrough = commands.proxyCommand6(ethaddress, tag)
+#        elif command_choice == 8:
+#            passthrough = commands.proxyCommand7()
+#        elif command_choice == 9:
+#            passthrough = commands.proxyCommand8()
+#        elif command_choice == 10:
+#            tag = getTag()
+#            passthrough = commands.proxyCommand9(tag)
+#        elif command_choice == 11:
+#            ethaddress = getEthAdress()
+#            tag = getTag()
+#            passthrough = commands.proxyCommand10(ethaddress, tag)
+#        elif command_choice == 12:
+#            ethaddress = getEthAdress()
+#            tag = getTag()
+#            passthrough = commands.proxyCommand11(ethaddress, tag)
+#        elif command_choice == 13:
+#            passthrough = commands.proxyCommand12()
+
         proxyCommandsList = {
             0: commands.proxyCommand0(),
             1: commands.proxyCommand1(tag),
             2: commands.proxyCommand2(tag),
-            3: commands.proxyCommand3(tag)#,
- #          4: commands.proxyCommand4(),
-  #          5: commands.proxyCommand5(),
-   #         6: commands.proxyCommand6(),
-    #        7: commands.proxyCommand7(),
-     #       8: commands.proxyCommand8(),
-      #      9: commands.proxyCommand9(),
-       #     10: commands.proxyCommand10(),
-        #    11: commands.proxyCommand11(),
-         #  13: commands.proxyCommand13(),
-          #  14: commands.proxyCommand14()
+            3: commands.proxyCommand3(tag),
+            4: commands.proxyCommand4(),
+            5: commands.proxyCommand5(tag),
+            6: commands.proxyCommand6(ethaddress, tag),
+            7: commands.proxyCommand7(),
+            8: commands.proxyCommand8(),
+            9: commands.proxyCommand9(tag),
+            10: commands.proxyCommand10(ethaddress, tag),
+            11: commands.proxyCommand11(ethaddress, tag),
+            12: commands.proxyCommand12(),
+            13: commands.proxyCommand13(),
         }
-        passthrough = proxyCommandsList.get(command_choice - 1)
+
+        passthrough = proxyCommandsList.get(command_choice-1)
     return passthrough
 
 
