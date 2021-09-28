@@ -216,7 +216,7 @@ class commands:
         action = "eth_getBlockByNumber"
         #tag = 0x10d4f
         boolean = 'true'
-        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean} " \
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean}" \
                f"&apikey={commands.api_key}"
 
     # Returns information about a uncle by block number.

@@ -1,6 +1,7 @@
 import json
 import requests
-from commands import commands, getEthAdress, getContractAdress, getTxHash, getBlockNo, getTimeStamp, getTag
+from commands import commands, getEthAdress, getContractAdress, getTxHash, getBlockNo, getTimeStamp, getTag, getHex,\
+    getToAddress, getHashData, getGasProvided, getGasPricePaid, getValueSentInTransaction
 
 def userinput():
 
@@ -125,7 +126,6 @@ def userinput():
             # Get Block And Uncle Rewards by BlockNo
             1: commands.logCommand1(ethaddress)
         }
-        passthrough = logCommandsList.get(command_choice - 1)
     elif module_choice == 6:
         conversion_dict = {
             0: "GetMostRecentBlock",
@@ -135,7 +135,7 @@ def userinput():
             4: "GetTransactionByHash",
             5: "GetTransactionByBlockNumberAndIndex",
             6: "GetTransactionCount",
-            7: "GetRawTransaction",
+            7: "GetRawTransaction",                # Error: returns null  BAN THIS COMMAND
             8: "getTransactionReceipt",
             9: "getCall",
             10: "GetCode",
@@ -150,72 +150,78 @@ def userinput():
                   f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
                   f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n"
                   f"10.{conversion_dict[9]}\n11.{conversion_dict[10]}\n"
-                  f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n"))
+                  f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n"
+                  f"14.{conversion_dict[13]}\n"))
 
-        ethaddress = getEthAdress()
-        tag = getTag()
+        #ethaddress = getEthAdress()
+        #tag = getTag()
+        #txhash = getTxHash()
+        if command_choice == 1:
+            proxy = commands.proxyCommand0()
+        elif command_choice == 2:
+            tag = getTag()
+            proxy = commands.proxyCommand1(tag)
+        elif command_choice == 3:
+            tag = getTag()
+            proxy = commands.proxyCommand2(tag)
+        elif command_choice == 4:
+            tag = getTag()
+            proxy = commands.proxyCommand3(tag)
+        elif command_choice == 5:
+            txhash = getTxHash()
+            proxy = commands.proxyCommand4(txhash)
+        elif command_choice == 6:
+            tag = getTag()
+            proxy = commands.proxyCommand5(tag)
+        elif command_choice == 7:
+            ethaddress = getEthAdress()
+            proxy = commands.proxyCommand6(ethaddress)  # address = 0x4bd5900Cb274ef15b153066D736bf3e83A9ba44e
+        elif command_choice == 8:
+            hex = getHex()
+            proxy = commands.proxyCommand7()  # Error: returns null hex = 0xf904808000831cfde080
+        elif command_choice == 9:
+            txhash = getTxHash()
+            proxy = commands.proxyCommand8(txhash) # hash =0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
+        elif command_choice == 10:
+            toAddress = getToAddress() # address = 0xAEEF46DB4855E25702F8237E8f403FddcaF931C0
+            data = getHashData()
+            proxy = commands.proxyCommand9(toAddress, data)  # Error: returns null  data = 0x70a08231000000000000000000000000e16359506c028e51f16be38986ec5746251e9724
+        elif command_choice == 11:
+            ethaddress = getEthAdress()
+            proxy = commands.proxyCommand10(ethaddress)  # Error: returns error  data  = 0x6e03d9cce9d60f3e9f2597e13cd4c54c55330cfd
+        elif command_choice == 12:
+            ethaddress = getEthAdress()
+            proxy = commands.proxyCommand11(ethaddress)
+        elif command_choice == 13:
+            proxy = commands.proxyCommand12()
+        elif command_choice == 14:
+            hashData = getHashData()
+            toAddress = getToAddress()
+            gasProvided = getGasProvided()
+            gasPricePaid = getGasPricePaid()
+            valueSent = getValueSentInTransaction()
+            proxy = commands.proxyCommand13(hashData,toAddress,gasProvided,gasPricePaid,valueSent)
 
-#        if command_choice == 1 or command_choice == 2 or command_choice == 3 or command_choice == 5 or command_choice == 9:
-#            tag = getTag()
-#        elif command_choice == 6 or command_choice == 10 or command_choice == 11:
-#            ethaddress = getEthAdress()
 
-#        if command_choice == 1:
-#            passthrough = commands.proxyCommand0()
-#        elif command_choice == 2:
-#            tag = getTag()
-#            passthrough = commands.proxyCommand1(tag)
-#        elif command_choice == 3:
-#            tag = getTag()
-#            passthrough = commands.proxyCommand2(tag)
-#        elif command_choice == 4:
-#            tag = getTag()
-#            passthrough = commands.proxyCommand3(tag)
-#        elif command_choice == 5:
-#            passthrough = commands.proxyCommand4()
-#        elif command_choice == 6:
-#            tag = getTag()
-#            passthrough = commands.proxyCommand5(tag)
-#        elif command_choice == 7:
-#            ethaddress = getEthAdress()
-#            tag = getTag()
-#            passthrough = commands.proxyCommand6(ethaddress, tag)
-#        elif command_choice == 8:
-#            passthrough = commands.proxyCommand7()
-#        elif command_choice == 9:
-#            passthrough = commands.proxyCommand8()
-#        elif command_choice == 10:
-#            tag = getTag()
-#            passthrough = commands.proxyCommand9(tag)
-#        elif command_choice == 11:
-#            ethaddress = getEthAdress()
-#            tag = getTag()
-#            passthrough = commands.proxyCommand10(ethaddress, tag)
-#        elif command_choice == 12:
-#            ethaddress = getEthAdress()
-#            tag = getTag()
-#            passthrough = commands.proxyCommand11(ethaddress, tag)
-#        elif command_choice == 13:
-#            passthrough = commands.proxyCommand12()
 
-        proxyCommandsList = {
-            0: commands.proxyCommand0(),
-            1: commands.proxyCommand1(tag),
-            2: commands.proxyCommand2(tag),
-            3: commands.proxyCommand3(tag),
-            4: commands.proxyCommand4(),
-            5: commands.proxyCommand5(tag),
-            6: commands.proxyCommand6(ethaddress, tag),
-            7: commands.proxyCommand7(),
-            8: commands.proxyCommand8(),
-            9: commands.proxyCommand9(tag),
-            10: commands.proxyCommand10(ethaddress, tag),
-            11: commands.proxyCommand11(ethaddress, tag),
-            12: commands.proxyCommand12(),
-            13: commands.proxyCommand13(),
-        }
-
-        passthrough = proxyCommandsList.get(command_choice-1)
+       # proxyCommandsList = {
+       #     0: commands.proxyCommand0(),
+       #     1: commands.proxyCommand1(tag),
+       #     2: commands.proxyCommand2(tag),
+       #     3: commands.proxyCommand3(tag),
+       #     4: commands.proxyCommand4(txhash),
+        #    5: commands.proxyCommand5(tag),
+       #     6: commands.proxyCommand6(ethaddress),
+       #     7: commands.proxyCommand7()
+     #       8: commands.proxyCommand8(),
+      #      9: commands.proxyCommand9(),
+       #     10: commands.proxyCommand10(),
+        #    11: commands.proxyCommand11(),
+         #  13: commands.proxyCommand13(),
+          #  14: commands.proxyCommand14()
+        #}
+        #passthrough = proxyCommandsList.get(command_choice - 1)
+        passthrough = proxy
     return passthrough
 
 
@@ -246,12 +252,3 @@ def extract():
                     if not comment:
                         outfile.write(f"{line}\n")
                         print("Data has been extracted and cleaned!!!")
-
-
-
-
-
-
-
-
-
