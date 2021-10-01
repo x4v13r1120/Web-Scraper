@@ -257,10 +257,6 @@ def userinput():
         elif command_choice == 3:
             # Returns the size of the ethereum  blockchain, in bytes, over date range
             stats = commands.statsCommand2()
-        elif command_choice == 4:
-            contractAddress = getContractAddress()
-            stats = commands.tokensCommand0(contractAddress)
-
         passthrough = stats
 
     return passthrough
