@@ -33,32 +33,62 @@ def userinput():
         ethaddress = getEthAdress()
         txhash = getTxHash()
         contractaddress = getContractAdress()
-        accountCommandsList = {
-            0: commands.accountCommand0(ethaddress),  # Get Ether Balance for a Single Address
+        if command_choice == 1:
+            ethaddress = getEthAdress()
+            accountCommand = commands.accountCommand0(ethaddress)
+        elif command_choice == 2:
+            ethaddress == getEthAdress()
+            accountCommand = commands.accountCommand1(ethaddress)
+        elif command_choice == 3:
+            ethaddress = getEthAdress()
+            accountCommand = commands.accountCommand2(ethaddress)
+        elif command_choice == 4
+            ethaddress = getEthAdress()
+            accountCommand = commands.accountCommand3(ethaddress)
+        elif command_choice == 5
+            txhash = getTxHash()
+            accountCommand = commands.accountCommand4(txhash)
+        elif command_choice == 6
+            accountCommand = commands.accountCommand5()
+        elif command_choice == 7
+            ethaddress = getEthAdress()
+            contractaddress = getContractAdress()
+            accountCommand = commands.accountCommand6(ethaddress, contractaddress)
+        elif command_choice == 8
+            ethaddress = getEthAdress()
+            contractaddress = getContractAdress()
+            accountCommand = commands.accountCommand7(ethaddress, contractaddress)
+        elif command_choice == 9
+            ethaddress = getEthAdress()
+            accountCommand = commands.accountCommand8(ethaddress)
 
-            1: commands.accountCommand1(ethaddress),
+        accountCommandsList = {
+         #   0: commands.accountCommand0(ethaddress),  # Get Ether Balance for a Single Address
+
+         #   1: commands.accountCommand1(ethaddress),
             # Get Ether Balance for Multiple Addresses in a Single Call
 
-            2: commands.accountCommand2(ethaddress),
+         #   2: commands.accountCommand2(ethaddress),
             # Get a list of'Normal' Transactions By Address
 
-            3: commands.accountCommand3(ethaddress),
+         #   3: commands.accountCommand3(ethaddress),
             # get a list of 'internal transactions by address'
 
-            4: commands.accountCommand4(txhash),
+         #   4: commands.accountCommand4(txhash),
             # Get 'Internal Transactions' by Transaction Hash
 
-            5: commands.accountCommand5(),  # get "internal transactions" by block range
+         #   5: commands.accountCommand5(),  # get "internal transactions" by block range
 
-            6: commands.accountCommand6(ethaddress, contractaddress),
+         #   6: commands.accountCommand6(ethaddress, contractaddress),
             # Get a list of 'ERC20 - Token Transfer Events' by Address
 
-            7: commands.accountCommand7(ethaddress, contractaddress),
+        #    7: commands.accountCommand7(ethaddress, contractaddress),
             # Get a list of 'ERC721 - Token Transfer Events' by Address
 
-            8: commands.accountCommand8(ethaddress)  # Get list of Blocks Mined by Address
-        }
-        return accountCommandsList.get(command_choice-1)
+       #     8: commands.accountCommand8(ethaddress)  # Get list of Blocks Mined by Address
+       # }
+        #return accountCommandsList.get(command_choice-1)
+        return accountCommand
     elif module_choice == 2:
         conversion_dict = {
             0: "getAbiContract",
