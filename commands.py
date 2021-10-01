@@ -308,6 +308,21 @@ class commands:
 
 
 ### START OF TOKENS MODULE COMMANDS ###
+
+    # Returns the current amount of an ERC-20 token in circulation.
+    @staticmethod
+    def tokensCommand0(contractaddress):
+        action = "tokensupply"
+        return f"{commands.website}&module={commands.module[8]}&action={action}&contractaddress={contractaddress}&apikey={commands.api_key}"
+
+    # Returns the current balance of an ERC-20 token of an address.
+    @staticmethod
+    def tokensCommand1(contractaddress, address, tag):
+        action = "tokenbalance"
+        return f"{commands.website}&module={commands.module[0]}&action={action}&contractaddress={contractaddress}&address={address}&apikey={commands.api_key}"
+
+
+
 ### START OF GAS TRACKER MODULE COMMANDS ###
 
     # Get Estimation of Confirmation Time
@@ -324,6 +339,30 @@ class commands:
 
 
 ### START OF STATS MODULE COMMANDS ###
+
+    # Get total supply of ether
+    @staticmethod
+    def statsCommand0():
+        action = "ethsupply"
+        return f"{commands.website}&module={commands.module[8]}&action={action}&apikey={commands.api_key}"
+
+    # get ether last price
+    @staticmethod
+    def statsCommand1():
+        action = "ethprice"
+        return f"{commands.website}&module={commands.module[8]}&action={action}&apikey={commands.api_key}"
+
+    # get etherium nodes size
+    @staticmethod
+    def statsCommand2():
+        action = "chainsize"
+        startDate = "2019-02-01"
+        endDate = "2019-02-28"
+        clientType = "geth"
+        syncMode = "default"
+        sort = "asc"
+        return f"{commands.website}&module={commands.module[8]}&action={action}&startdate={startDate}" \
+               f"&enddate={endDate}&clienttype={clientType}&syncmode={syncMode}&sort={sort}&apikey={commands.api_key}"
 
 
 

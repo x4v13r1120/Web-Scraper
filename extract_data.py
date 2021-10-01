@@ -238,7 +238,6 @@ def userinput():
             gasTracker = commands.gasTrackerCommand1()
 
         passthrough = gasTracker
-
     elif module_choice == 9:
         conversion_dict = {
             0: "GetTotalEtherSupply",
@@ -258,8 +257,8 @@ def userinput():
             # Returns the size of the ethereum  blockchain, in bytes, over date range
             stats = commands.statsCommand2()
         passthrough = stats
-
     return passthrough
+
 
 
 def extract():
