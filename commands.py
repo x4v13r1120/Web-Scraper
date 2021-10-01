@@ -202,7 +202,7 @@ class commands:
                f"&toBlock={toBlock}&address={address}&topic0={topic0}" \
                f"&topic0_1_opr={topic0_1_opr}&topic1={topic1}&apikey={commands.api_key}"
 
-### START OF GETH/PARITY/PROXY MODULE COMMANDS ###5
+### START OF GETH/PARITY/PROXY MODULE COMMANDS ###
 
     # Returns the number of most recent block
     @staticmethod
@@ -214,102 +214,115 @@ class commands:
     @staticmethod
     def proxyCommand1(tag):
         action = "eth_getBlockByNumber"
-        tag = 0x10d4f
+        #tag = 0x10d4f
         boolean = 'true'
-        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean} " \
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean}" \
                f"&apikey={commands.api_key}"
 
     # Returns information about a uncle by block number.
     @staticmethod
-    def proxyCommand2(tag):
+    def proxyCommand2(tag):  # Error: returns null
         action = "eth_getUncleByBlockNumberAndIndex"
         index = 0x0
-        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&index={index}"\
+        return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&index={index}" \
                f"&apikey={commands.api_key}"
 
+    # Returns the number of transactions in a block.
     @staticmethod
     def proxyCommand3(tag):
         action = "eth_getBlockTransactionCountByNumber"
         return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&apikey={commands.api_key}"
 
+    # Returns the information about a transaction requested by transaction hash.
     @staticmethod
-    def proxyCommand4(txhash):
+    def proxyCommand4():  # Error: returns null
         action = "eth_getTransactionByHash"
-        #txhash = 0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1
-        return f"{commands.website}&module={commands.module[5]}&action={action}&txhash={txhash}&apikey={commands.api_key}"
+        txhash = 0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1
+        return f"{commands.website}&module={commands.module[5]}&action={action}&txhash{txhash}" \
+               f"&apikey={commands.api_key}"
 
+    # Returns information about a transaction by block number and transaction index position.
     @staticmethod
     def proxyCommand5(tag):
         action = "eth_getTransactionByBlockNumberAndIndex"
         index = 0x11A
-        tag = tag
         return f"{commands.website}&module={commands.module[5]}&action={action}&tag{tag}&index{index}&apikey={commands.api_key}"
 
+    # Returns the number of transactions performed by an address.
     @staticmethod
-    def proxyCommand6(ethaddress):
+    def proxyCommand6(address, tag):  # Error: returns null
         action = "eth_getTransactionCount"
-        tag = 'latest'
-        address = str (ethaddress)
-        return f"{commands.website}&module={commands.module[5]}&action={action}&address={address}&tag={tag}" \
-               f"&apikey={commands.api_key}"
+        return f"{commands.website}&module={commands.module[5]}&action={action}&address{address}&tag{tag}&apikey={commands.api_key}"
 
+    # Submits a pre-signed transaction for broadcast to the Ethereum network.
     @staticmethod
-    def proxyCommand7(hex):
+    def proxyCommand7():  # Error: returns null
         action = "eth_sendRawTransaction"
-        #hex = 0xf904808000831cfde080
-        return f"{commands.website}&module={commands.module[5]}&action={action}&hex={hex}" \
-               f"&apikey={commands.api_key}"
+        hex = 0xf904808000831cfde080
+        return f"{commands.website}&module={commands.module[5]}&action={action}&hex{hex}&apikey={commands.api_key}"
 
+    # Returns the receipt of a transaction by transaction hash.
     @staticmethod
-    def proxyCommand8(txhash):
+    def proxyCommand8():  # Error: returns null
         action = "eth_getTransactionReceipt"
-        hash = txhash
-        return f"{commands.website}&module={commands.module[5]}&action={action}&txhash={txhash}&apikey={commands.api_key}"
+        txhash = 0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1
+        return f"{commands.website}&module={commands.module[5]}&action={action}&txhash{txhash}&apikey={commands.api_key}"
 
+    # Executes a new message call immediately without creating a transaction on the block chain.
     @staticmethod
-    def proxyCommand9(toAddress,hashData):
+    def proxyCommand9(tag):  # Error: prints error
         action = "eth_call"
-        to = toAddress
-        data = hashData
-        tag = "latest"
-        return f"{commands.website}&module={commands.module[5]}&action={action}&to={to}&data={data}&tag={tag}&apikey={commands.api_key}"
+        to = 0xAEEF46DB4855E25702F8237E8f403FddcaF931C0
+        data = 0x70a08231000000000000000000000000e16359506c028e51f16be38986ec5746251e9724
+        return f"{commands.website}&module={commands.module[5]}&action={action}&to{to}&data{data}&tag{tag}&apikey={commands.api_key}"
 
-    def proxyCommand10(ethaddress):
-        action = "eth_getCode"
-        address = ethaddress
-        tag = "latest"
-        return f"{commands.website}&module={commands.module[5]}&action={action}&address={address}&tag={tag}" \
-               f"&apikey={commands.api_key}"
-
+    # Returns code at a given address.
     @staticmethod
-    def proxyCommand11(ethaddress):
-        action = "eth_getStorageAt"
-        address = ethaddress
-        tag = "latest"
-        position = 0x0
-        return f"{commands.website}&module={commands.module[5]}&action={action}&address={address}&tag={tag}" \
-               f"&position={position}&apikey={commands.api_key}"
+    def proxyCommand10(address, tag):  # Error: returns null
+        action = "eth_getCode"
+        return f"{commands.website}&module={commands.module[5]}&action={action}&address{address}&tag{tag}&apikey={commands.api_key}"
 
+    # Returns the value from a storage position at a given address.
+    @staticmethod  # experimental endpoint
+    def proxyCommand11(address, tag):  # Error: returns error
+        action = "eth_getStorageAt"
+        position = 0x0
+        return f"{commands.website}&module={commands.module[5]}&action={action}&address{address}&position{position}&tag{tag}&apikey={commands.api_key}"
+
+    # Returns the current price per gas in wei.
     @staticmethod
     def proxyCommand12():
         action = "eth_gasPrice"
         return f"{commands.website}&module={commands.module[5]}&action={action}&apikey={commands.api_key}"
 
+    # Makes a call or transaction, which won't be added to the blockchain and returns the used gas.
     @staticmethod
-    def proxyCommand13(hashData, toAddress, gasProvided, gasPricePaid, valueSent):
+    def proxyCommand13():
         action = "eth_estimateGas"
-        data = hashData
-        to = toAddress
-        value = valueSent
-        gas = gasProvided
-        gasPrice = gasPricePaid
-        return f"{commands.website}&module={commands.module[5]}&action={action}&data={data}&to={to}&value={value}&gas={gas}&gasPrice={gasPrice}&apikey={commands.api_key}"
+        data = 0x4e71d92d
+        to = 0xf0160428a8552ac9bb7e050d90eeade4ddd52843
+        value = 0xff22
+        gasPrice = 0x51da038cc
+        gas = 0x5f5e0ff
+        return f"{commands.website}&module={commands.module[5]}&action={action}&data{data}&to{to}&value{value}&gasPrice{gasPrice}&gas{gas}&apikey={commands.api_key}"
 
-    #@staticmethod
-    #def proxyCommand():
 
 ### START OF TOKENS MODULE COMMANDS ###
 ### START OF GAS TRACKER MODULE COMMANDS ###
+
+    # Get Estimation of Confirmation Time
+    @staticmethod
+    def gasTrackerCommand0(gasPrice):
+        action = "gasestimate"
+        return f"{commands.website}&module={commands.module[7]}&action={action}&gasprice={gasPrice}&apikey={commands.api_key}"
+
+    #Returns the current Safe, Proposed and Fast gas prices.
+    @staticmethod
+    def gasTrackerCommand1():
+        action = "gasoracle"
+        return f"{commands.website}&module={commands.module[7]}&action={action}&apikey={commands.api_key}"
+
+
 ### START OF STATS MODULE COMMANDS ###
 
 
@@ -340,7 +353,7 @@ def getHashData():
         "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
     return hashData
 
-def getEthAdress():
+def getEthAddress():
     address = str(input(
         "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
     return address
@@ -364,7 +377,7 @@ def getTxHash():
 def getContractAdress():
     contractaddress = str(input(
         "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return contractaddress
+    return contractAddress
 
 def getBlockNo():
     blockno = int(input("Please enter Block Number."))  # block for testing = 216540
