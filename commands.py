@@ -148,14 +148,14 @@ class commands:
 
 ### START OF BLOCK MODULE COMMANDS ###
 
-# Get Block And Uncle Rewards by BlockNo
+# Get Block And Uncle Rewards by Block Number
     @staticmethod
     def blockCommand0(blockno):
         action = "getblockreward"
         return f"{commands.website}&module={commands.module[3]}" \
                f"&action={action}&blockno={blockno}&apikey={commands.api_key}"
 
-# Get Estimated Block Countdown Time by BlockNo
+# Get Estimated Block Countdown Time by Block Number
     @staticmethod
     def blockCommand1(blockno):
         action = "getblockcountdown"
@@ -221,7 +221,7 @@ class commands:
 
     # Returns information about a uncle by block number.
     @staticmethod
-    def proxyCommand2(tag):  # Error: returns null
+    def proxyCommand2(tag):
         action = "eth_getUncleByBlockNumberAndIndex"
         index = 0x0
         return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&index={index}" \
@@ -289,7 +289,7 @@ class commands:
         position = 0x0
         return f"{commands.website}&module={commands.module[5]}&action={action}&address{address}&position{position}&tag{tag}&apikey={commands.api_key}"
 
-    # Returns the current price per gas in wei.
+    # Returns the current price per gas in gwei.
     @staticmethod
     def proxyCommand12():
         action = "eth_gasPrice"
@@ -346,13 +346,13 @@ class commands:
         action = "ethsupply"
         return f"{commands.website}&module={commands.module[8]}&action={action}&apikey={commands.api_key}"
 
-    # get ether last price
+    # Get ether last price
     @staticmethod
     def statsCommand1():
         action = "ethprice"
         return f"{commands.website}&module={commands.module[8]}&action={action}&apikey={commands.api_key}"
 
-    # get etherium nodes size
+    # get ether nodes size
     @staticmethod
     def statsCommand2():
         action = "chainsize"

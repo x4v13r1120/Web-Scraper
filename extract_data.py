@@ -1,7 +1,8 @@
 import json
 import requests
-from commands import commands, getEthAddress, getContractAddress, getTxHash, getBlockNo, getTimeStamp, getTag, getHex, \
-    getToAddress, getHashData, getGasProvided, getGasPricePaid, getValueSentInTransaction, getGasPrice
+from commands import commands, getEthAddress, getContractAddress, getTxHash, \
+    getBlockNo, getTimeStamp, getTag, getHex,getToAddress, getHashData, \
+    getGasProvided, getGasPricePaid, getValueSentInTransaction, getGasPrice
 
 
 def userinput():
@@ -14,15 +15,15 @@ def userinput():
 
     if module_choice == 1:
         conversion_dict = {
-            0: "etherBalanceSingle",
-            1: "etherBalanceMultiple",
-            2: "listNormalTransactions",
-            3: "listInternalTransactions",
-            4: "txhashInternalTransactions",
-            5: "blockRangeInternalTx",
-            6: "listErc20Transfer",
-            7: "listErc721Transfer",
-            8: "listBlocksMined"
+            0: "Get Ether Balance for a Single Address",
+            1: "Get Ether Balance for Multiple Addresses in a Single Call",
+            2: "Get a list of Normal Transactions By Address",
+            3: "Get a list of internal transactions by address",
+            4: "Get 'Internal Transactions' by Transaction Hash",
+            5: "Get internal transactions by block range",
+            6: "Get a list of 'ERC20 - Token Transfer Events' by Address",
+            7: "Get a list of 'ERC721 - Token Transfer Events' by Address",
+            8: "Get list of Blocks Mined by Address"
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -52,7 +53,7 @@ def userinput():
             contractaddress = getContractAddress()
             accountCommand = commands.accountCommand6(ethaddress, contractaddress)
         elif command_choice == 8:
-            ethaddress = getEthaddress()
+            ethaddress = getEthAddress()
             contractaddress = getContractAddress()
             accountCommand = commands.accountCommand7(ethaddress, contractaddress)
         elif command_choice == 9:
@@ -61,8 +62,8 @@ def userinput():
         return accountCommand
     elif module_choice == 2:
         conversion_dict = {
-            0: "getAbiContract",
-            1: "getContractSource",
+            0: "Get Contract ABI for Verified Contract Source Code",
+            1: "Get Contract Source Code for Verified Contract Source Codes",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -78,8 +79,8 @@ def userinput():
         passthrough = contractCommandsList.get(command_choice - 1)
     elif module_choice == 3:
         conversion_dict = {
-            0: "checkContractStatus",
-            1: "checkTransactionStatus",
+            0: "Check Contract Execution Status",
+            1: "Check Transaction Receipt Status",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -94,9 +95,9 @@ def userinput():
         passthrough = transactionCommandsList.get(command_choice - 1)
     elif module_choice == 4:
         conversion_dict = {
-            0: "GetBlockRewards",
-            1: "GetEstimatedBlockCountdown",
-            2: "GetBlockNumber"
+            0: "Get Block And Uncle Rewards by Block Number",
+            1: "Get Estimated Block Countdown Time by Block Number",
+            2: "Get Block Number by Timestamp"
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -113,8 +114,8 @@ def userinput():
         passthrough = blockCommand
     elif module_choice == 5:
         conversion_dict = {
-            0: "GetEventLogs",
-            1: "GetEventLogsBetweenBlocks"
+            0: "Get Event Logs from block number ____ to 'latest' Block",
+            1: "Get Event Logs from block number ____ to block ____"
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -127,20 +128,25 @@ def userinput():
         }
     elif module_choice == 6:
         conversion_dict = {
-            0: "GetMostRecentBlock",
-            1: "GetBlockByNumber",
-            2: "GetUncleByBlockAndIndex",
-            3: "GetBlockTransactionCountByNumber",
-            4: "GetTransactionByHash",
-            5: "GetTransactionByBlockNumberAndIndex",
-            6: "GetTransactionCount",
-            7: "GetRawTransaction",  # Error: returns null  BAN THIS COMMAND
-            8: "getTransactionReceipt",
-            9: "getCall",
-            10: "GetCode",
-            11: "GetStorageAt",
-            12: "getGasPrice",
-            13: "getEstimatedGas",
+            0: "Returns the number of most recent block",
+            1: "Returns information about a block by block number",
+            2: "Returns information about a uncle by block number",
+            3: "Returns the number of transactions in a block",
+            4: "Returns the information about a transaction requested by "
+               "transaction hash",
+            5: "Returns information about a transaction by block number and "
+               "transaction index position",
+            6: "Returns the number of transactions performed by an address",
+            7: "Submits a pre-signed transaction for broadcast to the Ethereum"
+               " network",  # Error: returns null  BAN THIS COMMAND
+            8: "Returns the receipt of a transaction by transaction hash",
+            9: "Executes a new message call immediately without creating a "
+               "transaction on the block chain",
+            10: "Returns code at a given address",
+            11: "Returns the value from a storage position at a given address",
+            12: "Returns the current price per gas in gwei",
+            13: "Makes a call or transaction, which won't be added to the "
+                "blockchain and returns the used gas",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -206,8 +212,8 @@ def userinput():
         passthrough = proxy
     elif module_choice == 7:
         conversion_dict = {
-            0: "Get ERC20-Token TotalSupply by Contractaddress",
-            1: "Get ERC20-Token Account Balance for TokenContractaddress",
+            0: "Returns the current amount of an ERC-20 token in circulation",
+            1: "Returns the current balance of an ERC-20 token of an address",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -225,8 +231,8 @@ def userinput():
         passthrough = tokens
     elif module_choice == 8:
         conversion_dict = {
-            0: "gasConfirmationTime",
-            1: "getGasPrice",
+            0: "Get Estimation of Confirmation Time",
+            1: "Returns the current Safe, Proposed and Fast gas prices",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -240,9 +246,9 @@ def userinput():
         passthrough = gasTracker
     elif module_choice == 9:
         conversion_dict = {
-            0: "GetTotalEtherSupply",
-            1: "GetEtherLastPrice",
-            2: "GetEtherNodeSize",
+            0: "Get total supply of ether",
+            1: "Get ether last price",
+            2: "Get ether nodes size",
         }
         command_choice = int(
             input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
