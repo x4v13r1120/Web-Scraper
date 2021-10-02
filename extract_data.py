@@ -3,8 +3,8 @@ import requests
 from commands import commands, getEthAddress, getContractAddress, getTxHash, getBlockNo, getTimeStamp, getTag, getHex, \
     getToAddress, getHashData, getGasProvided, getGasPricePaid, getValueSentInTransaction, getGasPrice
 
-def userinput():
 
+def userinput():
     passthrough = ""
 
     module_choice = int(input(f"What module do u wish to utilize:\n1.{commands.module[0]}\n2.{commands.module[1]}\n"
@@ -75,7 +75,7 @@ def userinput():
             1: commands.contractCommand1(ethaddress)  # Get Contract Source Code for Verified
             # Contract Source Codes
         }
-        passthrough = contractCommandsList.get(command_choice-1)
+        passthrough = contractCommandsList.get(command_choice - 1)
     elif module_choice == 3:
         conversion_dict = {
             0: "checkContractStatus",
@@ -258,7 +258,6 @@ def userinput():
             stats = commands.statsCommand2()
         passthrough = stats
     return passthrough
-
 
 
 def extract():
