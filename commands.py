@@ -19,7 +19,7 @@ class commands:
         website = website
         module = module
 
-### START OF ACCOUNT MODULE COMMANDS ###
+    ### START OF ACCOUNT MODULE COMMANDS ###
     # Get Ether Balance for a Single Address
     @staticmethod
     def accountCommand0(address):
@@ -114,55 +114,55 @@ class commands:
         return f"{commands.website}&module={commands.module[0]}&action={action}&address={address}&=blocktype={blocktype}&page={page}" \
                f"&offset={offset}&apikey={commands.api_key}"
 
-### START OF CONTRACT MODULE COMMANDS ###
+    ### START OF CONTRACT MODULE COMMANDS ###
 
-# Get Contract ABI for Verified Contract Source Code
+    # Get Contract ABI for Verified Contract Source Code
     @staticmethod
     def contractCommand0(address):
         action = "getabi"
         return f"{commands.website}&module={commands.module[1]}" \
                f"&action={action}&address={address}&apikey={commands.api_key}"
 
-# Get Contract Source Code for Verified Contract Source Codes
+    # Get Contract Source Code for Verified Contract Source Codes
     @staticmethod
     def contractCommand1(address):
         action = "getsourcecode"
         return f"{commands.website}&module={commands.module[1]}" \
                f"&action={action}&address={address}&apikey={commands.api_key}"
 
-### START OF TRANSACTIONS MODULE COMMANDS ###
+    ### START OF TRANSACTIONS MODULE COMMANDS ###
 
-#Check Contract Execution Status
+    # Check Contract Execution Status
     @staticmethod
     def transactionCommand0(txhash):
         action = "getstatus"
         return f"{commands.website}&module={commands.module[2]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
-# Check Transaction Receipt Status
+    # Check Transaction Receipt Status
     @staticmethod
     def transactionCommand1(txhash):
         action = "gettxreceiptstatus"
         return f"{commands.website}&module={commands.module[2]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
-### START OF BLOCK MODULE COMMANDS ###
+    ### START OF BLOCK MODULE COMMANDS ###
 
-# Get Block And Uncle Rewards by Block Number
+    # Get Block And Uncle Rewards by Block Number
     @staticmethod
     def blockCommand0(blockno):
         action = "getblockreward"
         return f"{commands.website}&module={commands.module[3]}" \
                f"&action={action}&blockno={blockno}&apikey={commands.api_key}"
 
-# Get Estimated Block Countdown Time by Block Number
+    # Get Estimated Block Countdown Time by Block Number
     @staticmethod
     def blockCommand1(blockno):
         action = "getblockcountdown"
         return f"{commands.website}&module={commands.module[3]}" \
                f"&action={action}&blockno={blockno}&apikey={commands.api_key}"
 
-# Get Block Number by Timestamp
+    # Get Block Number by Timestamp
     @staticmethod
     def blockCommand2(timestamp):
         action = "getblocknobytime"
@@ -170,9 +170,9 @@ class commands:
         return f"{commands.website}&module={commands.module[3]}&action={action}" \
                f"&timestamp={timestamp}&closest={closest}&apikey={commands.api_key}"
 
-### START OF LOGS MODULE COMMANDS ###
+    ### START OF LOGS MODULE COMMANDS ###
 
-# Sample Log API Queries
+    # Sample Log API Queries
 
     # Get Event Logs from block number 379224 to 'latest' Block,
     # where log address = 0x33990122638b9132ca29c723bdf037f1a891a70c
@@ -182,11 +182,11 @@ class commands:
         action = "getLogs"
         fromBlock = 379224
         toBlock = "latest"
-        topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545" # test hash
+        topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545"  # test hash
         return f"{commands.website}&module={commands.module[4]}&action={action}&fromBlock={fromBlock}" \
                f"&toBlock={toBlock}&address={address}&topic0={topic0}&apikey={commands.api_key}"
 
-    #Get Event Logs from block number 379224 to block 400000 ,
+    # Get Event Logs from block number 379224 to block 400000 ,
     # where log address = 0x33990122638b9132ca29c723bdf037f1a891a70c,
     # topic[0] = 0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545
     # 'AND' topic[1] = 0x72657075746174696f6e00000000000000000000000000000000000000000000
@@ -195,14 +195,14 @@ class commands:
         action = "getLogs"
         fromBlock = 379224
         toBlock = "latest"
-        topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545" # test hash
+        topic0 = "0xf63780e752c6a54a94fc52715dbc5518a3b4c3c2833d301a204226548a2a8545"  # test hash
         topic0_1_opr = "and"
         topic1 = "0x72657075746174696f6e00000000000000000000000000000000000000000000"
         return f"{commands.website}&module={commands.module[4]}&action={action}&fromBlock={fromBlock}" \
                f"&toBlock={toBlock}&address={address}&topic0={topic0}" \
                f"&topic0_1_opr={topic0_1_opr}&topic1={topic1}&apikey={commands.api_key}"
 
-### START OF GETH/PARITY/PROXY MODULE COMMANDS ###
+    ### START OF GETH/PARITY/PROXY MODULE COMMANDS ###
 
     # Returns the number of most recent block
     @staticmethod
@@ -214,7 +214,7 @@ class commands:
     @staticmethod
     def proxyCommand1(tag):
         action = "eth_getBlockByNumber"
-        #tag = 0x10d4f
+        # tag = 0x10d4f
         boolean = 'true'
         return f"{commands.website}&module={commands.module[5]}&action={action}&tag={tag}&boolean={boolean}" \
                f"&apikey={commands.api_key}"
@@ -306,8 +306,7 @@ class commands:
         gas = 0x5f5e0ff
         return f"{commands.website}&module={commands.module[5]}&action={action}&data{data}&to{to}&value{value}&gasPrice{gasPrice}&gas{gas}&apikey={commands.api_key}"
 
-
-### START OF TOKENS MODULE COMMANDS ###
+    ### START OF TOKENS MODULE COMMANDS ###
 
     # Returns the current amount of an ERC-20 token in circulation.
     @staticmethod
@@ -321,9 +320,7 @@ class commands:
         action = "tokenbalance"
         return f"{commands.website}&module={commands.module[0]}&action={action}&contractaddress={contractaddress}&address={address}&apikey={commands.api_key}"
 
-
-
-### START OF GAS TRACKER MODULE COMMANDS ###
+    ### START OF GAS TRACKER MODULE COMMANDS ###
 
     # Get Estimation of Confirmation Time
     @staticmethod
@@ -331,14 +328,13 @@ class commands:
         action = "gasestimate"
         return f"{commands.website}&module={commands.module[7]}&action={action}&gasprice={gasPrice}&apikey={commands.api_key}"
 
-    #Returns the current Safe, Proposed and Fast gas prices.
+    # Returns the current Safe, Proposed and Fast gas prices.
     @staticmethod
     def gasTrackerCommand1():
         action = "gasoracle"
         return f"{commands.website}&module={commands.module[7]}&action={action}&apikey={commands.api_key}"
 
-
-### START OF STATS MODULE COMMANDS ###
+    ### START OF STATS MODULE COMMANDS ###
 
     # Get total supply of ether
     @staticmethod
@@ -363,69 +359,3 @@ class commands:
         sort = "asc"
         return f"{commands.website}&module={commands.module[8]}&action={action}&startdate={startDate}" \
                f"&enddate={endDate}&clienttype={clientType}&syncmode={syncMode}&sort={sort}&apikey={commands.api_key}"
-
-
-
-## USER INPUT ###
-def getValueSentInTransaction():
-    valueSent = str(input(
-        "Please enter value sent in transaction."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return valueSent
-
-def getGasPricePaid():
-    gasPricePaid = str(input(
-        "Please enter gas price paid."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return gasPricePaid
-
-def getGasProvided():
-    gasProvided = str(input(
-        "Please enter gas provided."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return gasProvided
-
-def getToAddress():
-    toAddress = str(input(
-        "Please enter address to interact with."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return toAddress
-
-def getHashData():
-    hashData = str(input(
-        "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return hashData
-
-def getEthAddress():
-    address = str(input(
-        "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return address
-
-def getHex():
-    hex = str(input(
-        "Please enter Hex."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return hex
-
-def getTag():
-    tag = str(input(
-        "Please enter the tag."))  # tag for testing = 0x10d4f
-    return tag
-
-def getTxHash():
-    txhash = str(input(
-        "Please enter Transaction Hash."))  # address for testing =
-    # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
-    return txhash
-
-def getContractAddress():
-    contractAddress = str(input(
-        "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return contractAddress
-
-def getBlockNo():
-    blockno = int(input("Please enter Block Number."))  # block for testing = 216540
-    return blockno
-
-def getTimeStamp():
-    timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
-    return timestamp
-
-def getGasPrice():
-    gasPrice = int(input("Please enter gas price.")) # $0
-    return gasPrice
