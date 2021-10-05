@@ -20,6 +20,44 @@ txlist = {
     "gasUsed",
     "confirmations"
 }
+wallet = {
+    "address",
+    "balance"
+}
+internaltxlist = {
+  "blockNumber",
+  "timeStamp",
+  "hash",
+  "fromAddress",
+  "toAddress",
+  "value",
+  "contractAddress",
+  "input",
+  "type",
+  "gas",
+  "gasUsed",
+  "traceId",
+  "isError",
+  "errCode"
+}
+
+internalhashlist = {
+  "blockNumber",
+  "timeStamp",
+  "fromAddress",
+  "toAddress",
+  "value",
+  "contractAddress",
+  "input",
+  "type",
+  "gas",
+  "gasUsed",
+  "isError",
+  "errCode"
+}
+
+
+
 
 def transform():
     with open("data/cleaned_data.json") as infile:
