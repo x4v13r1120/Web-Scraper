@@ -69,7 +69,7 @@ class commands:
         return f"{commands.website}&module={commands.module[0]}" \
                f"&action={action}&txhash={txhash}&apikey={commands.api_key}"
 
-    # get "internal transactions" by block range
+    # get "internal transactions" by block range # need user input for endblock
     @staticmethod
     def accountCommand5():
         action = "txlistinternal"

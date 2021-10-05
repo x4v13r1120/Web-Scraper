@@ -189,7 +189,7 @@ def userInput():
             0: "Get Estimation of Confirmation Time",
             1: "Returns the current Safe, Proposed and Fast gas prices",
         }
-        command_choice = getM8CommandChoice()
+        command_choice = getM8CommandChoice(conversion_dict)
         if command_choice == 1:
             gasPrice = getGasPrice()
             gasTracker = commands.gasTrackerCommand0(gasPrice)
@@ -202,7 +202,7 @@ def userInput():
             1: "Get ether last price",
             2: "Get ether nodes size",
         }
-        command_choice = getM9CommandChoice()
+        command_choice = getM9CommandChoice(conversion_dict)
         if command_choice == 1:
             stats = commands.statsCommand0()
         elif command_choice == 2:
@@ -214,68 +214,154 @@ def userInput():
 
 ### GETTERS ###
 def getValueSentInTransaction():
-    valueSent = str(input(
-        "Please enter value sent in transaction."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return valueSent
+    while True:
+        valueSent = str(input(
+            "Please enter value sent in transaction."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if valueSent.isalnum():
+                return valueSent
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(valueSent)
 
 def getGasPricePaid():
-    gasPricePaid = str(input(
-        "Please enter gas price paid."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return gasPricePaid
+    while True:
+        gasPricePaid = str(input(
+            "Please enter gas price paid."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if gasPricePaid.isalnum():
+                return gasPricePaid
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(gasPricePaid)
 
 def getGasProvided():
-    gasProvided = str(input(
-        "Please enter gas provided."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return gasProvided
+    while True:
+        gasProvided = str(input(
+            "Please enter gas provided"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if gasProvided.isalnum():
+                return gasProvided
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(gasProvided)
 
 def getToAddress():
-    toAddress = str(input(
-        "Please enter address to interact with."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return toAddress
+    while True:
+        toAddress = str(input(
+            "Please enter address to interact with."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if toAddress.isalnum():
+                return toAddress
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(toAddress)
 
 def getHashData():
-    hashData = str(input(
-        "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return hashData
+    while True:
+        hashData = str(input(
+            "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if hashData.isalnum():
+                return hashData
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(hashData)
 
 def getEthAddress():
-    address = str(input(
-        "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return address
+    while True:
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if address.isalnum():
+                return address
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(address)
 
 def getHex():
-    hex = str(input(
-        "Please enter Hex."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return hex
+    while True:
+        hex = str(input(
+            "Please enter hex Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if hex.isalnum():
+                return hex
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(hex)
 
 def getTag():
-    tag = str(input(
-        "Please enter the tag."))  # tag for testing = 0x10d4f
-    return tag
+    while True:
+        tag = str(input(
+            "Please enter the tag."))  # tag for testing = 0x10d4f
+        try:
+            if tag.isalnum():
+                return tag
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(tag)
 
 def getTxHash():
-    txhash = str(input(
-        "Please enter Transaction Hash."))  # address for testing =
-    # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
-    return txhash
+    while True:
+        txhash = str(input(
+            "Please enter Transaction Hash."))  # address for testing =
+        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
+        try:
+            if txhash.isalnum():
+                return txhash
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(txhash)
 
 def getContractAddress():
-    contractAddress = str(input(
-        "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-    return contractAddress
+    while True:
+        contractAddress = str(input(
+            "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if contractAddress.isalnum():
+                return contractAddress
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(contractAddress)
 
 def getBlockNo():
-    blockno = int(input("Please enter Block Number."))  # block for testing = 216540
+    try:
+        blockno = int(input("Please enter Block Number."))  # block for testing = 216540
+    except ValueError:
+        print("Unacceptable input. Please try again.")
     return blockno
 
 def getTimeStamp():
-    timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
+    try:
+        timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
+    except ValueError:
+        print("Unacceptable input. Please try again.")
     return timestamp
 
 def getGasPrice():
     try:
         gasPrice = int(input("Please enter gas price.")) # $0
-    except ValuError:
+    except ValueError:
         print("Unacceptable input. Please try again.")
     return gasPrice
 
@@ -432,7 +518,7 @@ def getM9CommandChoice(conversion_dict):
                   f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n")
         try:
             val = int(command_choice)
-            if val >= 1 and val <=9:
+            if val >= 1 and val <=9 and val:
                 return val
             else:
                 print("Unacceptable input. Please try again.")
