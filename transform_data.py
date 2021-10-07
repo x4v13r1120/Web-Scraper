@@ -1,71 +1,23 @@
 import json
 
-txlist = {
-    "blockNumber",
-    "timeStamp",
-    "hash",
-    "nonce",
-    "blockHash",
-    "transactionsIndex",
-    "fromAddress",
-    "toAddress",
-    "value",
-    "gas",
-    "gasPrice",
-    "isError",
-    "txreceipt_status",
-    "input",
-    "contractAddress",
-    "cumulativeGasUsed",
-    "gasUsed",
-    "confirmations"
-}
-wallet = {
-    "address",
-    "balance"
-}
-internaltxlist = {
-  "blockNumber",
-  "timeStamp",
-  "hash",
-  "fromAddress",
-  "toAddress",
-  "value",
-  "contractAddress",
-  "input",
-  "type",
-  "gas",
-  "gasUsed",
-  "traceId",
-  "isError",
-  "errCode"
-}
-
-internalhashlist = {
-  "blockNumber",
-  "timeStamp",
-  "fromAddress",
-  "toAddress",
-  "value",
-  "contractAddress",
-  "input",
-  "type",
-  "gas",
-  "gasUsed",
-  "isError",
-  "errCode"
-}
-
-
-
-
 def transform():
-    with open("data/cleaned_data.json") as infile:
-        txlist = json.load(infile)
-
-
-
-
-
+# starting cleaning process
+    comment = False
+    with open("data/jsondata.json", 'r') as infile, open("data/cleaned_data.json", 'w') as \
+            outfile:
+        for line in infile:
+            if line.startswith("/*"):
+                comment = True
+                continue
+            elif line.startswith("*/"):
+                comment = False
+                continue
+            elif comment:
+                continue
+            if len(line.strip()) > 0:
+                if not line.strip().startswith("//"):
+                    if not comment:
+                        outfile.write(f"{line}\n")
+                        print("Transformation Complete.")
 
 
