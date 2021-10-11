@@ -29,7 +29,9 @@ def userInput():
             accountCommand = commands.accountCommand1(ethaddress)
         elif command_choice == 3:
             ethaddress = getEthAddress()
-            accountCommand = commands.accountCommand2(ethaddress)
+            startBlock = getStartBlock()
+            endBlock = getEndBlock()
+            accountCommand = commands.accountCommand2(ethaddress,endBlock,startBlock)
         elif command_choice == 4:
             ethaddress = getEthAddress()
             accountCommand = commands.accountCommand3(ethaddress)

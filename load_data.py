@@ -1,4 +1,11 @@
-txlist = {
+import json
+import pandas as pd
+import sqlite3
+import matplotlib.pyplot as plt
+
+"""
+accountmodule = {
+    "balance",
     "blockNumber",
     "timeStamp",
     "hash",
@@ -10,48 +17,27 @@ txlist = {
     "value",
     "gas",
     "gasPrice",
-    "isError",
     "txreceipt_status",
     "input",
     "contractAddress",
     "cumulativeGasUsed",
     "gasUsed",
-    "confirmations"
+    "confirmations",
+    "type",
+    "gasUsed",
+    "traceId",
+    "isError",
+    "errCode",
+    "tokenName",
+    "tokenSymbol",
+    "tokenDecimal",
+    "transactionIndex",
+    "tokenID"
 }
+"""
 
-wallet = []
 
-internaltxlist = {
-  "blockNumber",
-  "timeStamp",
-  "hash",
-  "fromAddress",
-  "toAddress",
-  "value",
-  "contractAddress",
-  "input",
-  "type",
-  "gas",
-  "gasUsed",
-  "traceId",
-  "isError",
-  "errCode"
-}
-
-internalhashlist = {
-  "blockNumber",
-  "timeStamp",
-  "fromAddress",
-  "toAddress",
-  "value",
-  "contractAddress",
-  "input",
-  "type",
-  "gas",
-  "gasUsed",
-  "isError",
-  "errCode"
-}
+n = {}
 
 def load():
 	print("WE HAVENT LOAD DATA TO DATA BASE YET!!!!!!!")
