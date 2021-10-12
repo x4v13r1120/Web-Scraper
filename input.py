@@ -1,5 +1,9 @@
 import transform_data
 from commands import commands
+import sqlite3
+import load_data
+
+
 
 def userInput():
     passthrough = ""
@@ -24,6 +28,7 @@ def userInput():
         if command_choice == 1:
             ethaddress = getEthAddress()
             accountCommand = commands.accountCommand0(ethaddress)
+            load_data.insertmodChoicecomChoice(module_choice,command_choice)
         elif command_choice == 2:
             ethaddress = getEthAddress()
             accountCommand = commands.accountCommand1(ethaddress)
