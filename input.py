@@ -157,8 +157,7 @@ def userInput():
         elif command_choice == 9:
             toaddress = getToAddress()
             data = getHashData()
-            proxy = commands.proxyCommand8(toaddress,
-                                           data)
+            proxy = commands.proxyCommand8(toaddress, data)
         elif command_choice == 10:
             ethaddress = getEthAddress()
             proxy = commands.proxyCommand10(
@@ -209,6 +208,7 @@ def userInput():
             0: "Get total supply of ether",
             1: "Get ether last price",
             2: "Get ether nodes size",
+            3: "Get total node count",
         }
         command_choice = getM9CommandChoice(conversion_dict)
         if command_choice == 1:
@@ -216,7 +216,11 @@ def userInput():
         elif command_choice == 2:
             stats = commands.statsCommand1()
         elif command_choice == 3:
-            stats = commands.statsCommand2()
+            getStartDate()
+            getEndDate()
+            stats = commands.statsCommand2(startDate, endDate)
+        elif command_choice == 4:
+            stats = commands.statsCommand3()
         passthrough = stats
     return passthrough
 
@@ -373,6 +377,70 @@ def getGasPrice():
         print("Unacceptable input. Please try again.")
     return gasPrice
 
+def getStartBlock():
+    try:
+        startBlock = int(input("Enter the starting block.")) #0
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return startBlock
+
+def getEndBlock():
+    try:
+        endBlock = int(input("Enter the ending block.")) #99999
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return endBlock
+
+def getFromBlock():
+    while True:
+        fromBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
+        try:
+            if fromBlock.isalnum():
+                return fromBlock
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+        return str(fromBlock)
+
+def getToBlock():
+    while True:
+        toBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
+        try:
+            if toBlock.isalnum():
+                return toBlock
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+        return str(toBlock)
+
+def getStartDate():
+    while True:
+        startDate = str(input(
+            "Please enter the starting data of the query."))  #
+        try:
+            if startDate.isalnum():
+                return startDate
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(startDate)
+
+def getEndDate():
+    while True:
+        endDate = str(input(
+            "Please enter the end date of the query."))
+        try:
+            if endDate.isalnum():
+                return endDate
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(endDate)
+
 ### COMMAND SELECTION ###
 def getModuleChoice():
     # exception handling for when users input wrong type or number
@@ -523,7 +591,7 @@ def getM9CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                  f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n")
+                  f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n4.{conversion_dict[3]}")
         try:
             val = int(command_choice)
             if val >= 1 and val <=9 and val:
