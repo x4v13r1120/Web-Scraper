@@ -40,4 +40,16 @@ accountmodule = {
 n = {}
 
 def load():
-	print("WE HAVENT LOAD DATA TO DATA BASE YET!!!!!!!")
+    conn = sqlite3.connect('data/ethdata')
+    c = conn.cursor()
+    with open("data/cleaned_data.json") as infile:
+        print("paulllllll is sus!!!!!!")
+
+def insertmodChoicecomChoice(module_choice, command_choice):
+    conn = sqlite3.connect('data/ethdata')
+    c = conn.cursor()
+    c.execute("INSERT INTO moduleCommand(module_choice, command_choice) VALUES ('module_choice', 'command_choice')")
+
+
+
+
