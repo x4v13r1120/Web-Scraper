@@ -6,10 +6,11 @@ import load_data
 
 def userInput():
     passthrough = ""
-
     module_choice = getModuleChoice()
 
     if module_choice == 1:
+        module1 = classes.account()
+
         conversion_dict = {
             0: "Get Ether Balance for a Single Address",
             1: "Get Ether Balance for Multiple Addresses in a Single Call",
@@ -22,8 +23,10 @@ def userInput():
             8: "Get list of Blocks Mined by Address"
         }
 
-        command_choice = getM1CommandChoice(conversion_dict)
-
+        command_choice = getM0CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module1.GetEtherBalanceForSingleAddress()
+            return passthrough
     elif module_choice == 2:
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",

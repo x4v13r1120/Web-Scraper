@@ -5,12 +5,10 @@ from transform_data import transform
 from load_data import load
 
 if __name__ == '__main__':
-    command1 = classes.command()
-    module1 = classes.account()
+    extract()
+    transform()
 
-    x = (module1.GetEtherBalanceForSingleAddress())
 
-    extract(x)
 
 
 
