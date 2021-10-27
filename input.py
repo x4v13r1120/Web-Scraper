@@ -1,8 +1,6 @@
 import transform_data
-from commands import commands
 import sqlite3
 import load_data
-
 
 
 def userInput():

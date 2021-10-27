@@ -2,9 +2,9 @@ import json
 import requests
 import input
 
-def extract():
+def extract(x):
     # make request using command from user input
-    response = requests.get(input.userInput())
+    response = requests.get(x)
     address_content = response.json()
     result = address_content.get("result")
     # dump data
