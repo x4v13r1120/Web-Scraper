@@ -4,7 +4,6 @@ import sqlite3
 import load_data
 
 
-
 def userInput():
     passthrough = ""
 
@@ -24,11 +23,6 @@ def userInput():
         }
 
         command_choice = getM1CommandChoice(conversion_dict)
-
-        if command_choice == 1:
-            ethaddress = getEthAddress()
-            accountCommand = commands.accountCommand0(ethaddress)
-            load_data.insertmodChoicecomChoice(module_choice,command_choice)
 
     elif module_choice == 2:
         conversion_dict = {
@@ -320,10 +314,10 @@ def getModuleChoice():
     # exception handling for when users input wrong type or number
     module = classes.module()
     while True:
-        module_choice = input(f"What module do u wish to utilize:\n1.{classes.module[0]}\n2.{classes.module[1]}\n"
-                              f"3.{classes.module[2]}\n4.{classes.module[3]}\n5.{classes.module[4]}\n"
-                              f"6.{classes.module[5]}\n7.{classes.module[6]}\n8.{classes.module[7]}\n"
-                              f"9.{classes.module[8]}\n")
+        module_choice = input(f"What module do u wish to utilize:\n1.{module.types[0]}\n2.{module.types[1]}\n"
+                              f"3.{module.types[2]}\n4.{module.types[3]}\n5.{module.types[4]}\n"
+                              f"6.{module.types[5]}\n7.{module.types[6]}\n8.{module.types[7]}\n"
+                              f"9.{module.types[8]}\n")
         try:
             val = int(module_choice)
             if val >= 1 and val <= 9:
@@ -334,7 +328,7 @@ def getModuleChoice():
             print("Unacceptable input. Please try again.")
     return int(module_choice)
 
-def getM1CommandChoice(conversion_dict):
+def getM0CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -345,6 +339,21 @@ def getM1CommandChoice(conversion_dict):
         try:
             val = int(command_choice)
             if val >= 1 and val <=9:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+def getM1CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                  f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <=2:
                 return val
             else:
                 print("Unacceptable input. Please try again.")
@@ -371,21 +380,6 @@ def getM3CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                  f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <=2:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-def getM4CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
                   f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n")
         try:
             val = int(command_choice)
@@ -397,7 +391,7 @@ def getM4CommandChoice(conversion_dict):
             print("Unacceptable input. Please try again.")
     return int(command_choice)
 
-def getM5CommandChoice(conversion_dict):
+def getM4CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -412,7 +406,7 @@ def getM5CommandChoice(conversion_dict):
             print("Unacceptable input. Please try again.")
     return int(command_choice)
 
-def getM6CommandChoice(conversion_dict):
+def getM5CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
@@ -425,6 +419,21 @@ def getM6CommandChoice(conversion_dict):
         try:
             val = int(command_choice)
             if val >= 1 and val <=12:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+def getM6CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                  f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <=9:
                 return val
             else:
                 print("Unacceptable input. Please try again.")
@@ -448,21 +457,6 @@ def getM7CommandChoice(conversion_dict):
     return int(command_choice)
 
 def getM8CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                  f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <=9:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-def getM9CommandChoice(conversion_dict):
     # exception handling for when users input wrong type or number
     while True:
         command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
