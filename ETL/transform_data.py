@@ -1,10 +1,12 @@
 import json
+
+
 # Code from Josiah Greenwell of FGCU
 
 def transform():
-# starting cleaning process
+    # starting cleaning process
     comment = False
-    with open("data/jsondata.json", 'r') as infile, open("data/cleaned_data.json", 'w') as \
+    with open("../data/jsondata.json", 'r') as infile, open("../data/cleaned_data.json", 'w') as \
             outfile:
         for line in infile:
             if line.startswith("/*"):
@@ -20,5 +22,3 @@ def transform():
                     if not comment:
                         outfile.write(f"{line}\n")
                         print("Transformation Complete.")
-
-
