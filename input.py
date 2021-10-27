@@ -1,6 +1,8 @@
+import classes
 import transform_data
 import sqlite3
 import load_data
+
 
 
 def userInput():
@@ -27,86 +29,32 @@ def userInput():
             ethaddress = getEthAddress()
             accountCommand = commands.accountCommand0(ethaddress)
             load_data.insertmodChoicecomChoice(module_choice,command_choice)
-        elif command_choice == 2:
-            ethaddress = getEthAddress()
-            accountCommand = commands.accountCommand1(ethaddress)
-        elif command_choice == 3:
-            ethaddress = getEthAddress()
-            startBlock = getStartBlock()
-            endBlock = getEndBlock()
-            accountCommand = commands.accountCommand2(ethaddress,endBlock,startBlock)
-        elif command_choice == 4:
-            ethaddress = getEthAddress()
-            accountCommand = commands.accountCommand3(ethaddress)
-        elif command_choice == 5:
-            txhash = getTxHash()
-            accountCommand = commands.accountCommand4(txhash)
-        elif command_choice == 6:
-            accountCommand = commands.accountCommand5()
-        elif command_choice == 7:
-            ethaddress = getEthAddress()
-            contractaddress = getContractAddress()
-            accountCommand = commands.accountCommand6(ethaddress, contractaddress)
-        elif command_choice == 8:
-            ethaddress = getEthAddress()
-            contractaddress = getContractAddress()
-            accountCommand = commands.accountCommand7(ethaddress, contractaddress)
-        elif command_choice == 9:
-            ethaddress = getEthAddress()
-            accountCommand = commands.accountCommand8(ethaddress)
-        return accountCommand
+
     elif module_choice == 2:
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",
             1: "Get Contract Source Code for Verified Contract Source Codes",
         }
-        command_choice = getM2CommandChoice(conversion_dict)
-        ethaddress = getEthAddress()
-        contractCommandsList = {
-            0: commands.contractCommand0(ethaddress),
-            1: commands.contractCommand1(ethaddress)
-        }
-        passthrough = contractCommandsList.get(command_choice - 1)
+
     elif module_choice == 3:
         conversion_dict = {
             0: "Check Contract Execution Status",
             1: "Check Transaction Receipt Status",
         }
-        command_choice = getM3CommandChoice(conversion_dict)
-        txhash = getTxHash()
-        transactionCommandsList = {
-            0: commands.transactionCommand0(txhash),
-            1: commands.transactionCommand1(txhash)
-        }
-        passthrough = transactionCommandsList.get(command_choice - 1)
+
     elif module_choice == 4:
         conversion_dict = {
             0: "Get Block And Uncle Rewards by Block Number",
             1: "Get Estimated Block Countdown Time by Block Number",
             2: "Get Block Number by Timestamp"
         }
-        command_choice = getM4CommandChoice(conversion_dict)
-        if command_choice == 1:
-            blockno = getBlockNo()
-            blockCommand = commands.blockCommandn0(blockno)
-        elif command_choice == 2:
-            blockno = getBlockNo()
-            blockCommand = commands.blockCommandn1(blockno)
-        elif command_choice == 3:
-            timestamp = getTimeStamp()
-            blockCommand = commands.blockCommand2(timestamp)
-        passthrough = blockCommand
+
     elif module_choice == 5:
         conversion_dict = {
             0: "Get Event Logs from block number ____ to 'latest' Block",
             1: "Get Event Logs from block number ____ to block ____"
         }
-        command_choice = getM5CommandChoice(conversion_dict)
-        ethaddress = getEthAddress()
-        logCommandsList = {
-            0: commands.logCommand0(ethaddress),
-            1: commands.logCommand1(ethaddress)
-        }
+
     elif module_choice == 6:
         conversion_dict = {
             0: "Returns the number of most recent block",
@@ -127,80 +75,19 @@ def userInput():
             12: "Makes a call or transaction, which won't be added to the "
                 "blockchain and returns the used gas",
         }
-        command_choice = getM6CommandChoice(conversion_dict)
-        if command_choice == 1:
-            proxy = commands.proxyCommand0()
-        elif command_choice == 2:
-            tag = getTag()
-            proxy = commands.proxyCommand1(tag)
-        elif command_choice == 3:
-            tag = getTag()
-            proxy = commands.proxyCommand2(tag)
-        elif command_choice == 4:
-            tag = getTag()
-            proxy = commands.proxyCommand3(tag)
-        elif command_choice == 5:
-            txhash = getTxHash()
-            proxy = commands.proxyCommand4(txhash)
-        elif command_choice == 6:
-            tag = getTag()
-            proxy = commands.proxyCommand5(tag)
-        elif command_choice == 7:
-            ethaddress = getEthAddress()
-            proxy = commands.proxyCommand6(ethaddress)
-        elif command_choice == 8:
-            txhash = getTxHash()
-            proxy = commands.proxyCommand7(
-                txhash)
-        elif command_choice == 9:
-            toaddress = getToAddress()
-            data = getHashData()
-            proxy = commands.proxyCommand8(toaddress, data)
-        elif command_choice == 10:
-            ethaddress = getEthAddress()
-            proxy = commands.proxyCommand10(
-                ethaddress)
-        elif command_choice == 11:
-            ethaddress = getEthAddress()
-            proxy = commands.proxyCommand10(ethaddress)
-        elif command_choice == 12:
-            proxy = commands.proxyCommand11()
-        elif command_choice == 13:
-            hashData = getHashData()
-            toaddress = getToAddress()
-            gasProvided = getGasProvided()
-            gasPricePaid = getGasPricePaid()
-            valueSent = getValueSentInTransaction()
-            proxy = commands.proxyCommand12(hashData, toaddress, gasProvided, gasPricePaid, valueSent)
-        passthrough = proxy
+
     elif module_choice == 7:
         conversion_dict = {
             0: "Returns the current amount of an ERC-20 token in circulation",
             1: "Returns the current balance of an ERC-20 token of an address",
         }
-        command_choice = getM7CommandChoice(conversion_dict)
 
-        if command_choice == 1:
-            contractAddress = getContractAddress()
-            tokens = commands.tokensCommand0(contractAddress)
-        elif command_choice == 2:
-            contractAddress = getContractAddress()
-            address = getEthAddress()
-            tag = getTag()
-            tokens = commands.tokensCommand1(contractAddress, address, tag)
-        passthrough = tokens
     elif module_choice == 8:
         conversion_dict = {
             0: "Get Estimation of Confirmation Time",
             1: "Returns the current Safe, Proposed and Fast gas prices",
         }
-        command_choice = getM8CommandChoice(conversion_dict)
-        if command_choice == 1:
-            gasPrice = getGasPrice()
-            gasTracker = commands.gasTrackerCommand0(gasPrice)
-        elif command_choice == 2:
-            gasTracker = commands.gasTrackerCommand1()
-        passthrough = gasTracker
+
     elif module_choice == 9:
         conversion_dict = {
             0: "Get total supply of ether",
@@ -208,18 +95,7 @@ def userInput():
             2: "Get ether nodes size",
             3: "Get total node count",
         }
-        command_choice = getM9CommandChoice(conversion_dict)
-        if command_choice == 1:
-            stats = commands.statsCommand0()
-        elif command_choice == 2:
-            stats = commands.statsCommand1()
-        elif command_choice == 3:
-            getStartDate()
-            getEndDate()
-            stats = commands.statsCommand2(startDate, endDate)
-        elif command_choice == 4:
-            stats = commands.statsCommand3()
-        passthrough = stats
+
     return passthrough
 
 ### GETTERS ###
@@ -442,11 +318,12 @@ def getEndDate():
 ### COMMAND SELECTION ###
 def getModuleChoice():
     # exception handling for when users input wrong type or number
+    module = classes.module()
     while True:
-        module_choice = input(f"What module do u wish to utilize:\n1.{commands.module[0]}\n2.{commands.module[1]}\n"
-                              f"3.{commands.module[2]}\n4.{commands.module[3]}\n5.{commands.module[4]}\n"
-                              f"6.{commands.module[5]}\n7.{commands.module[6]}\n8.{commands.module[7]}\n"
-                              f"9.{commands.module[8]}\n")
+        module_choice = input(f"What module do u wish to utilize:\n1.{classes.module[0]}\n2.{classes.module[1]}\n"
+                              f"3.{classes.module[2]}\n4.{classes.module[3]}\n5.{classes.module[4]}\n"
+                              f"6.{classes.module[5]}\n7.{classes.module[6]}\n8.{classes.module[7]}\n"
+                              f"9.{classes.module[8]}\n")
         try:
             val = int(module_choice)
             if val >= 1 and val <= 9:
