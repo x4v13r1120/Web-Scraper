@@ -16,15 +16,6 @@ class module:
         "stats"
     ]
 
-    def __init__(self):
-        pass
-
-    def get_type(self):
-        return self.types
-
-    def set_type(self, x):
-        self.types = self.types[x]
-
 
 class command(module):
     website = "https://api.etherscan.io/api?"
@@ -111,4 +102,3 @@ class account(command):
         self.commandList[self.address] = input.getEthAddress()
         self.set_urlString()
         return self.get_urlString()
-
