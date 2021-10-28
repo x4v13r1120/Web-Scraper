@@ -24,6 +24,9 @@ def userInput():
         if command_choice == 1:
             passthrough = module1.GetEtherBalanceForSingleAddress()
             return passthrough
+        elif command_choice == 3:
+            passthrough = module1.GetlistNormalTransactionsByAddress()
+            return passthrough
     elif module_choice == 2:
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",
@@ -252,6 +255,7 @@ def getGasPrice():
 
 
 def getStartBlock():
+    global startBlock
     try:
         startBlock = int(input("Enter the starting block."))  # 0
     except ValueError:
@@ -260,6 +264,7 @@ def getStartBlock():
 
 
 def getEndBlock():
+    global endBlock
     try:
         endBlock = int(input("Enter the ending block."))  # 99999
     except ValueError:

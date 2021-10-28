@@ -16,6 +16,15 @@ class module:
         "stats"
     ]
 
+    def __init__(self):
+        pass
+
+    def get_type(self):
+        return self.types
+
+    def set_type(self, x):
+        self.types = self.types[x]
+
 
 class command(module):
     website = "https://api.etherscan.io/api?"
@@ -100,5 +109,16 @@ class account(command):
         self.commandList[self.action] = 'balance'
         self.commandList[self.tag] = 'latest'
         self.commandList[self.address] = input.getEthAddress()
+        self.set_urlString()
+        return self.get_urlString()
+
+    def GetlistNormalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
+        self.commandList[self.action] = 'txlist'
+        self.commandList[self.address] = str(input.getEthAddress())
+        self.commandList[self.start_block] = str(input.getStartBlock())
+        self.commandList[self.end_block] = str(input.getEndBlock())
+        self.commandList[self.page] = page
+        self.commandList[self.offset] = offset
+        self.commandList[self.sort] = sort
         self.set_urlString()
         return self.get_urlString()
