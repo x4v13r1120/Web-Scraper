@@ -6,17 +6,21 @@ c = conn.cursor()
 
 
 def load():
-    ethdata = {}
+    rawdata = {}
     with open("data/cleaned_data.json") as infile:
-        ethdata = json.load(infile)
+        rawdata = json.load(infile)
 
         sql = "INSERT INTO test(blockNumber,timeStamp,hash,nonce,blockHash," \
               "transactionIndex,fromAddress,toAddress,value,gas,gasPrice,isError," \
               "txreceipt_status,input,contractAddress,cumulativeGasUsed,gasUsed,confirmations)" \
               "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-    for x in ethdata:
-        for keys in x:
-            print(x.values())
+    for keys in rawdata:
+        ethdata = []
+        for value in keys.values():
+            ethdata.append(value)
+        c.execute(sql, ethdata)
+
+
 
 
 
