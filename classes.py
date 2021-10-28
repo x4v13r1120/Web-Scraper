@@ -104,7 +104,6 @@ class account(command):
         self.set_type(0)
         self.commandList[self.module] = module.get_type(self)
 
-    # Get Ether Balance for a Single Address
     def GetEtherBalanceForSingleAddress(self):
         self.commandList[self.action] = 'balance'
         self.commandList[self.tag] = 'latest'

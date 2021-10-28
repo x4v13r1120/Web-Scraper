@@ -19,11 +19,7 @@ def load():
         for value in keys.values():
             ethdata.append(value)
         c.execute(sql, ethdata)
-
-
-
-
-
     conn.commit()
     conn.close()
+    print("Data successfully loaded into database!!!")
 

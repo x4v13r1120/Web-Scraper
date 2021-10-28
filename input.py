@@ -6,7 +6,7 @@ def userInput():
     module_choice = getModuleChoice()
 
     if module_choice == 1:
-        module1 = classes.account()
+        module0 = classes.account()
 
         conversion_dict = {
             0: "Get Ether Balance for a Single Address",
@@ -22,10 +22,13 @@ def userInput():
 
         command_choice = getM0CommandChoice(conversion_dict)
         if command_choice == 1:
-            passthrough = module1.GetEtherBalanceForSingleAddress()
+            passthrough = module0.GetEtherBalanceForSingleAddress()
+            return passthrough
+        elif command_choice == 2:
+            passthrough = module0.GetEtherBalanceforMultipleAddresses()
             return passthrough
         elif command_choice == 3:
-            passthrough = module1.GetlistNormalTransactionsByAddress()
+            passthrough = module0.GetlistNormalTransactionsByAddress()
             return passthrough
     elif module_choice == 2:
         conversion_dict = {
@@ -158,6 +161,18 @@ def getHashData():
             print("Unacceptable input. Please try again.")
     return str(hashData)
 
+def getMultipleEthAddress():
+    while True:
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if address.isalnum():
+                return address
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(address)
 
 def getEthAddress():
     while True:
