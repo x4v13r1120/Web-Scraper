@@ -25,10 +25,13 @@ def userInput():
             passthrough = module0.GetEtherBalanceForSingleAddress()
             return passthrough
         elif command_choice == 2:
-            passthrough = module0.GetEtherBalanceforMultipleAddresses()
+            passthrough = module0.GetEtherBalanceForMultipleAddresses()
             return passthrough
         elif command_choice == 3:
             passthrough = module0.GetlistNormalTransactionsByAddress()
+            return passthrough
+        elif command_choice == 4:
+            passthrough = module0.GettListInternalTransactionsByAddress()
             return passthrough
     elif module_choice == 2:
         conversion_dict = {

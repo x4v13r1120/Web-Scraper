@@ -111,6 +111,13 @@ class account(command):
         self.set_urlString()
         return self.get_urlString()
 
+    def GetEtherBalanceForMultipleAddresses(self):
+        self.commandList[self.action] = 'balancemulti'
+        self.commandList[self.tag] = 'latest'
+        self.commandList[self.address] = input.getEthAddress()
+        self.set_urlString()
+        return self.get_urlString()
+
     def GetlistNormalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
         self.commandList[self.action] = 'txlist'
         self.commandList[self.address] = str(input.getEthAddress())
@@ -121,3 +128,18 @@ class account(command):
         self.commandList[self.sort] = sort
         self.set_urlString()
         return self.get_urlString()
+
+    def GettListInternalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
+        self.commandList[self.action] = 'txlistinternal'
+        self.commandList[self.address] = str(input.getEthAddress())
+        self.commandList[self.start_block] = str(input.getStartBlock())
+        self.commandList[self.end_block] = str(input.getEndBlock())
+        self.commandList[self.page] = page
+        self.commandList[self.offset] = offset
+        self.commandList[self.sort] = sort
+        self.set_urlString()
+        return self.get_urlString()
+
+
+
+
