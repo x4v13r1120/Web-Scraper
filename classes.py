@@ -1,7 +1,5 @@
 import collections
 
-import null as null
-
 import input
 
 
@@ -225,7 +223,6 @@ class contracts(command):
         self.set_type(1)
         self.commandList[self.module] = module.get_type(self)
 
-
     # Returns the Contract Application Binary Interface ( ABI ) of a verified smart contract.
     def GetContractABIForVerifiedContractSourceCodes(self):
         self.commandList[self.action] = 'getabi'
@@ -278,7 +275,6 @@ class blocks(command):
         self.commandList[self.blockNo] = str(input.getBlockNo())
         self.set_urlString()
         return self.get_urlString()
-
 
 
     def GetTotalNodesCount(self):
