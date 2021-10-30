@@ -167,9 +167,9 @@ def getHashData():
 def getMultipleEthAddress():
     while True:
         address = str(input(
-            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+            "Please enter each Ether address followed by a ',':"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
         try:
-            if address.isalnum():
+            if address.find('0x', 0, 1000) != -1:
                 return address
             else:
                 print("Unacceptable input. Please try again.")
@@ -264,6 +264,20 @@ def getTimeStamp():
     return timestamp
 
 
+def getIndex():
+    try:
+        index = int(input("Please enter index.")) # index for testing can be 0x0 or 0x5 anything of that sort.
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+        return index
+
+def getPosition():
+    try:
+        position = int(input("Please enter hex code of the position in storage")) # 0x0, 0x5, or 0x11C
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+        return position
+
 def getGasPrice():
     try:
         gasPrice = int(input("Please enter gas price."))  # $0
@@ -307,7 +321,7 @@ def getToBlock():
     while True:
         toBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
         try:
-            if toBlock.isalnum():
+            if toBlock.isalpha() | toBlock.isalnum():
                 return toBlock
             else:
                 print("Unacceptable input. Please try again.")
