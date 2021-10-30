@@ -149,7 +149,7 @@ class account(command):
         return self.get_urlString()
 
     # Returns the list of internal transactions performed by an address, with optional pagination.
-    def GettListInternalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
+    def GetListInternalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
         self.commandList[self.action] = 'txlistinternal'
         self.commandList[self.address] = str(input.getEthAddress())
         self.commandList[self.start_block] = str(input.getStartBlock())
