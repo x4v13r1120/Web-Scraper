@@ -276,6 +276,238 @@ class blocks(command):
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the estimated time remaining, in seconds, until a certain block is mined.
+    def GetEstimatedBlockCountdownTimeByBlockno(self):
+        self.commandList[self.action] = 'getblockcountdown'
+        self.commandList[self.blockNo] = str(input.getBlockNo())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the block number that was mined at a certain timestamp.
+    def GetBlockNumberByTimestamp(self, closest="before"):
+        self.commandList[self.action] = 'getblocknobytime'
+        self.commandList[self.timestamp] = str(input.getTimeStamp())
+        self.commandList[self.closest] = closest
+        self.set_urlString()
+        return self.get_urlString()
+
+### START OF LOGS MODULE COMMANDS ###
+class logs(command):
+
+    def __init__(self):
+        command.__init__(self)
+        module.__init__(self)
+        self.set_type(4)
+        self.commandList[self.module] = module.get_type(self)
+
+    # Get Event Logs from block number 000000 to 'latest'/000000 Block
+    def SampleLogAPIQueries(self):
+        self.commandList[self.action] = 'getLogs'
+        self.commandList[self.from_block] = str(input.getFromBlock())
+        # toblock can be used by inputting a block number to go to or 'latest'
+        self.commandList[self.to_block] = str(input.getToBlock())
+        self.commandList[self.address] = str(input.getEthAddress())
+        # could put topic operator here but is not nessecary. I don't know what it would be used for so I left it out.
+        self.set_urlString()
+        return self.get_urlString()
+
+### START OF GETH/PARITY PROXY MODULE COMMANDS ###
+class proxy(command):
+
+    def __init__(self):
+        command.__init__(self)
+        module.__init__(self)
+        self.set_type(5)
+        self.commandList[self.module] = module.get_type(self)
+
+    # Returns the number of most recent block
+    def Eth_BlockNumber(self):
+        self.commandList[self.action] = 'eth_blockNumber'
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns information about a block by block number.
+    def Eth_GetBlockByNumber(self):
+        self.commandList[self.action] = 'eth_getBlockByNumber'
+        self.commandList[self.tag] = str(input.getTag())
+        # When true returns full transaction objects, when false only returns a list of transactions
+        self.commandList[self.boolean] = "true"
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns information about a uncle by block number.
+    def Eth_GetUncleByBlockNumberAndIndex(self):
+        self.commandList[self.action] = 'eth_getUncleByBlockNumberAndIndex'
+        self.commandList[self.tag] = str(input.getTag())
+        self.commandList[self.index] = str(input.getIndex())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the number of transactions in a block.
+    def Eth_GetBlockTransactionCountByNumber(self):
+        self.commandList[self.action] = 'eth_getBlockTransactionCountByNumber'
+        self.commandList[self.tag] = str(input.getTag())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the information about a transaction requested by transaction hash.
+    def Eth_getTransactionByHash(self):
+        self.commandList[self.action] = 'eth_getTransactionByHash'
+        self.commandList[self.txHash] = str(input.getTxHash())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns information about a transaction by block number and transaction index position.
+    def Eth_GetTransactionByBlockNumberAndIndex(self):
+        self.commandList[self.action] = 'eth_getTransactionByBlockNumberAndIndex'
+        self.commandList[self.tag] = str(input.getTag())
+        self.commandList[self.index] = str(input.getIndex())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the number of transactions performed by an address**.**
+    def Eth_GetTransactionCount(self):
+        self.commandList[self.action] = 'eth_getTransactionCount'
+        self.commandList[self.address] = str(input.getEthAddress())
+        self.commandList[self.tag] = str(input.getTag())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Submits a pre-signed transaction for broadcast to the Ethereum network.
+    def Eth_SendRawTransaction(self):
+        self.commandList[self.action] = 'Eth_sendRawTransaction'
+        self.commandList[self.hex] = str(input.getHex())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the receipt of a transaction by transaction hash.
+    def Eth_getTransactionReceipt(self):
+        self.commandList[self.action] = 'eth_getTransactionReceipt'
+        self.commandList[self.txHash] = str(input.getTxHash())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Executes a new message call immediately without creating a transaction on the block chain.
+    def Eth_Call(self):
+        self.commandList[self.action] = 'eth_call'
+        self.commandList[self.to] = str(input.getEthAddress())
+        self.commandList[self.data] = str(input.getHashData())
+        self.commandList[self.tag] = str(input.getTag())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns code at a given address.
+    def Eth_GetCode(self):
+        self.commandList[self.action] = 'eth_getCode'
+        self.commandList[self.address] = str(input.getEthAddress())
+        self.commandList[self.tag] = str(input.getTag())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the value from a storage position at a given address.
+    # EXPERIMENTAL
+    def Eth_GetStorageAt(self):
+        self.commandList[self.action] = 'eth_getStorageAt'
+        self.commandList[self.address] = str(input.getEthAddress())
+        self.commandList[self.position] = str(input.getPosition())
+        self.commandList[self.tag] = str(input.getTag())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the current price per gas in wei.
+    def Eth_GasPrice(self):
+        self.commandList[self.action] = 'eth_gasPrice'
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Makes a call or transaction, which won't be added to the blockchain and returns the used gas.
+    def Eth_EstimateGas(self):
+        self.commandList[self.action] = 'eth_estimateGas'
+        self.commandList[self.data] = str(input.getHashData())
+        self.commandList[self.to] = str(input.getEthAddress())
+        self.commandList[self.value] = str(input.getValueSentInTransaction())
+        self.commandList[self.gas_price] = str(input.getGasPrice())
+        self.commandList[self.gas] = str(input.getGasProvided())
+        self.set_urlString()
+        return self.get_urlString()
+
+### START OF TOKENS MODULE COMMANDS ###
+class tokens(command):
+
+    def __init__(self):
+        command.__init__(self)
+        module.__init__(self)
+        self.set_type(6)
+        self.commandList[self.module] = module.get_type(self)
+
+    # Returns the current amount of an ERC-20 token in circulation.
+    def GetERC20TokenTotalSupplyByContractAddress(self):
+        self.commandList[self.action] = 'tokensupply'
+        self.commandList[self.contract_address] = str(input.getContractAddress())
+        self.set_urlString()
+        return self.get_urlString()
+
+    # Returns the current balance of an ERC-20 token of an address.
+    def GetERC20TokenAccountBalanceForTokenContractAddress(self):
+        self.commandList[self.action] = 'tokenbalance'
+        self.commandList[self.contract_address] = str(input.getContractAddress())
+        self.commandList[self.address]= str(input.getEthAddress())
+        self.set_urlString()
+        return self.get_urlString()
+
+### START OF GAS TRACKER MODULE COMMANDS ###
+class gastracker(command):
+
+    def __init__(self):
+        command.__init__(self)
+        module.__init__(self)
+        self.set_type(7)
+        self.commandList[self.module] = module.get_type(self)
+
+    def GetEstimationOfConfirmationTime(self):
+        self.commandList[self.action] = 'gasestimate'
+        self.commandList[self.gas_price] = str(input.getGasPrice())
+        self.set_urlString()
+        return self.get_urlString()
+
+    def GetGasOracle(self):
+        self.commandList[self.action] = 'gasoracle'
+        self.set_urlString()
+        return self.get_urlString()
+
+### START OF STATS MODULE COMMANDS ###
+class stats(command):
+
+    def __init__(self):
+        command.__init__(self)
+        module.__init__(self)
+        self.set_type(8)
+        self.commandList[self.module] = module.get_type(self)
+
+    def GetTotalSupplyOfEther(self):
+        self.commandList[self.action] = 'ethsupply'
+        self.set_urlString()
+        return self.get_urlString()
+
+    def GetTotalSupplyOfEther2(self):
+        self.commandList[self.action] = 'ethsupply2'
+        self.set_urlString()
+        return self.get_urlString()
+
+    def GetEtherLastPrice(self):
+        self.commandList[self.action] = 'ethprice'
+        self.set_urlString()
+        return self.get_urlString()
+
+    def GetEthereumNodesSize(self, clienttype="geth", syncmode="default", sort="asc"):
+        self.commandList[self.action] = 'chainsize'
+        self.commandList[self.start_date] = str(input.getStartDate())
+        self.commandList[self.end_date] = str(input.getEndDate())
+        self.commandList[self.clienttype] = clienttype
+        self.commandList[self.syncmode] = syncmode
+        self.commandList[self.sort] = sort
+        self.set_urlString()
+        return self.get_urlString()
 
     def GetTotalNodesCount(self):
         self.commandList[self.action] = 'nodecount'
