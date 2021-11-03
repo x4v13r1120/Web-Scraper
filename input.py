@@ -1,9 +1,452 @@
 import classes
 
 
+### GETTERS ###
+def getValueSentInTransaction():
+    while True:
+        valueSent = str(input(
+            "Please enter value sent in transaction."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if valueSent.isalnum():
+                return valueSent
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(valueSent)
+
+
+def getGasPricePaid():
+    while True:
+        gasPricePaid = str(input(
+            "Please enter gas price paid."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if gasPricePaid.isalnum():
+                return gasPricePaid
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(gasPricePaid)
+
+
+def getGasProvided():
+    while True:
+        gasProvided = str(input(
+            "Please enter gas provided"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if gasProvided.isalnum():
+                return gasProvided
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(gasProvided)
+
+
+def getToAddress():
+    while True:
+        toAddress = str(input(
+            "Please enter address to interact with."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if toAddress.isalnum():
+                return toAddress
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(toAddress)
+
+
+def getHashData():
+    while True:
+        hashData = str(input(
+            "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if hashData.isalnum():
+                return hashData
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(hashData)
+
+
+def getMultipleEthAddress():
+    while True:
+        address = str(input(
+            "Please enter each Ether address followed by a ',':"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if address.find('0x', 0, 1000) != -1:
+                return address
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(address)
+
+
+def getEthAddress():
+    while True:
+        address = str(input(
+            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if address.isalnum():
+                return address
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(address)
+
+
+def getHex():
+    while True:
+        hex = str(input(
+            "Please enter hex Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if hex.isalnum():
+                return hex
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(hex)
+
+
+def getTag():
+    while True:
+        tag = str(input(
+            "Please enter the tag."))  # tag for testing = 0x10d4f
+        try:
+            if tag.isalnum():
+                return tag
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(tag)
+
+
+def getTxHash():
+    while True:
+        txhash = str(input(
+            "Please enter Transaction Hash."))  # address for testing =
+        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
+        try:
+            if txhash.isalnum():
+                return txhash
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(txhash)
+
+
+def getContractAddress():
+    while True:
+        contractAddress = str(input(
+            "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+        try:
+            if contractAddress.isalnum():
+                return contractAddress
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(contractAddress)
+
+
+def getBlockNo():
+    try:
+        blockno = int(input("Please enter Block Number."))  # block for testing = 216540
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return blockno
+
+
+def getTimeStamp():
+    try:
+        timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return timestamp
+
+
+def getIndex():
+    try:
+        index = int(input("Please enter index."))  # index for testing can be 0x0 or 0x5 anything of that sort.
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+        return index
+
+
+def getPosition():
+    try:
+        position = int(input("Please enter hex code of the position in storage"))  # 0x0, 0x5, or 0x11C
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+        return position
+
+
+def getGasPrice():
+    gasPrice = ''
+    try:
+        gasPrice = int(input("Please enter gas price."))  # $0
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return gasPrice
+
+
+def getStartBlock():
+    startBlock = ''
+    try:
+        startBlock = int(input("Enter the starting block."))  # 0
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return startBlock
+
+
+def getEndBlock():
+    endBlock = ''
+    try:
+        endBlock = int(input("Enter the ending block."))  # 99999
+    except ValueError:
+        print("Unacceptable input. Please try again.")
+    return endBlock
+
+
+def getFromBlock():
+    while True:
+        fromBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
+        try:
+            if fromBlock.isalnum():
+                return fromBlock
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+        return str(fromBlock)
+
+
+def getToBlock():
+    while True:
+        toBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
+        try:
+            if toBlock.isalpha() | toBlock.isalnum():
+                return toBlock
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+        return str(toBlock)
+
+
+def getStartDate():
+    while True:
+        startDate = str(input(
+            "Please enter the starting data of the query."))  #
+        try:
+            if startDate.isalnum():
+                return startDate
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(startDate)
+
+
+def getEndDate():
+    while True:
+        endDate = str(input(
+            "Please enter the end date of the query."))
+        try:
+            if endDate.isalnum():
+                return endDate
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return str(endDate)
+
+
+### COMMAND SELECTION ###
+def getModuleChoice():
+    # exception handling for when users input wrong type or number
+    module = classes.module()
+    while True:
+        module_choice = input(f"What module do u wish to utilize:\n1.{module.types[0]}\n2.{module.types[1]}\n"
+                              f"3.{module.types[2]}\n4.{module.types[3]}\n5.{module.types[4]}\n"
+                              f"6.{module.types[5]}\n7.{module.types[6]}\n8.{module.types[7]}\n"
+                              f"9.{module.types[8]}\n")
+        try:
+            val = int(module_choice)
+            if 1 <= val <= 9:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(module_choice)
+
+
+def getM0CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n"
+                               f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
+                               f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
+                               f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 9:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM1CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 2:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM2CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 2:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM3CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 3:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM4CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 2:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM5CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n"
+                               f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
+                               f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
+                               f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n"
+                               f"10.{conversion_dict[9]}\n11.{conversion_dict[10]}\n"
+                               f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 12:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM6CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 9:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM7CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 9:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+def getM8CommandChoice(conversion_dict):
+    # exception handling for when users input wrong type or number
+    while True:
+        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
+                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n4.{conversion_dict[3]}")
+        try:
+            val = int(command_choice)
+            if val >= 1 and val <= 9 and val:
+                return val
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
+    return int(command_choice)
+
+
+module_choice = getModuleChoice()
+
+
 def userInput():
     passthrough = ""
-    module_choice = getModuleChoice()
 
     if module_choice == 1:
         module0 = classes.account()
@@ -200,437 +643,4 @@ def userInput():
             passthrough = module8.GetTotalNodesCount()
 
     return passthrough
-### GETTERS ###
-def getValueSentInTransaction():
-    while True:
-        valueSent = str(input(
-            "Please enter value sent in transaction."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if valueSent.isalnum():
-                return valueSent
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(valueSent)
 
-
-def getGasPricePaid():
-    while True:
-        gasPricePaid = str(input(
-            "Please enter gas price paid."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if gasPricePaid.isalnum():
-                return gasPricePaid
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(gasPricePaid)
-
-
-def getGasProvided():
-    while True:
-        gasProvided = str(input(
-            "Please enter gas provided"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if gasProvided.isalnum():
-                return gasProvided
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(gasProvided)
-
-
-def getToAddress():
-    while True:
-        toAddress = str(input(
-            "Please enter address to interact with."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if toAddress.isalnum():
-                return toAddress
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(toAddress)
-
-
-def getHashData():
-    while True:
-        hashData = str(input(
-            "Please enter hash of method signature"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if hashData.isalnum():
-                return hashData
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(hashData)
-
-def getMultipleEthAddress():
-    while True:
-        address = str(input(
-            "Please enter each Ether address followed by a ',':"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if address.find('0x', 0, 1000) != -1:
-                return address
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(address)
-
-def getEthAddress():
-    while True:
-        address = str(input(
-            "Please enter Ether Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if address.isalnum():
-                return address
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(address)
-
-
-def getHex():
-    while True:
-        hex = str(input(
-            "Please enter hex Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if hex.isalnum():
-                return hex
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(hex)
-
-
-def getTag():
-    while True:
-        tag = str(input(
-            "Please enter the tag."))  # tag for testing = 0x10d4f
-        try:
-            if tag.isalnum():
-                return tag
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(tag)
-
-
-def getTxHash():
-    while True:
-        txhash = str(input(
-            "Please enter Transaction Hash."))  # address for testing =
-        # 0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170
-        try:
-            if txhash.isalnum():
-                return txhash
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(txhash)
-
-
-def getContractAddress():
-    while True:
-        contractAddress = str(input(
-            "Please enter Contract Address."))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
-        try:
-            if contractAddress.isalnum():
-                return contractAddress
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(contractAddress)
-
-
-def getBlockNo():
-    try:
-        blockno = int(input("Please enter Block Number."))  # block for testing = 216540
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-    return blockno
-
-
-def getTimeStamp():
-    try:
-        timestamp = int(input("Please enter Timestamp."))  # timestamp for testing 1578638524
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-    return timestamp
-
-
-def getIndex():
-    try:
-        index = int(input("Please enter index.")) # index for testing can be 0x0 or 0x5 anything of that sort.
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-        return index
-
-def getPosition():
-    try:
-        position = int(input("Please enter hex code of the position in storage")) # 0x0, 0x5, or 0x11C
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-        return position
-
-def getGasPrice():
-    try:
-        gasPrice = int(input("Please enter gas price."))  # $0
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-    return gasPrice
-
-
-def getStartBlock():
-    global startBlock
-    try:
-        startBlock = int(input("Enter the starting block."))  # 0
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-    return startBlock
-
-
-def getEndBlock():
-    global endBlock
-    try:
-        endBlock = int(input("Enter the ending block."))  # 99999
-    except ValueError:
-        print("Unacceptable input. Please try again.")
-    return endBlock
-
-
-def getFromBlock():
-    while True:
-        fromBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
-        try:
-            if fromBlock.isalnum():
-                return fromBlock
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-        return str(fromBlock)
-
-
-def getToBlock():
-    while True:
-        toBlock = str(input("Enter the block the transaction is going to."))  # 'latest'
-        try:
-            if toBlock.isalpha() | toBlock.isalnum():
-                return toBlock
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-        return str(toBlock)
-
-
-def getStartDate():
-    while True:
-        startDate = str(input(
-            "Please enter the starting data of the query."))  #
-        try:
-            if startDate.isalnum():
-                return startDate
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(startDate)
-
-
-def getEndDate():
-    while True:
-        endDate = str(input(
-            "Please enter the end date of the query."))
-        try:
-            if endDate.isalnum():
-                return endDate
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return str(endDate)
-
-
-### COMMAND SELECTION ###
-def getModuleChoice():
-    # exception handling for when users input wrong type or number
-    module = classes.module()
-    while True:
-        module_choice = input(f"What module do u wish to utilize:\n1.{module.types[0]}\n2.{module.types[1]}\n"
-                              f"3.{module.types[2]}\n4.{module.types[3]}\n5.{module.types[4]}\n"
-                              f"6.{module.types[5]}\n7.{module.types[6]}\n8.{module.types[7]}\n"
-                              f"9.{module.types[8]}\n")
-        try:
-            val = int(module_choice)
-            if val >= 1 and val <= 9:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(module_choice)
-
-
-def getM0CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n"
-                               f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
-                               f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
-                               f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 9:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM1CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 2:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM2CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 2:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM3CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 3:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM4CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 2:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM5CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n"
-                               f"4.{conversion_dict[3]}\n5.{conversion_dict[4]}\n"
-                               f"6.{conversion_dict[5]}\n7.{conversion_dict[6]}\n"
-                               f"8.{conversion_dict[7]}\n9.{conversion_dict[8]}\n"
-                               f"10.{conversion_dict[9]}\n11.{conversion_dict[10]}\n"
-                               f"12.{conversion_dict[11]}\n13.{conversion_dict[12]}\n")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 12:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM6CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 9:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM7CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 9:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)
-
-
-def getM8CommandChoice(conversion_dict):
-    # exception handling for when users input wrong type or number
-    while True:
-        command_choice = input(f"which command you like to use:\n1.{conversion_dict[0]}\n"
-                               f"2.{conversion_dict[1]}\n3.{conversion_dict[2]}\n4.{conversion_dict[3]}")
-        try:
-            val = int(command_choice)
-            if val >= 1 and val <= 9 and val:
-                return val
-            else:
-                print("Unacceptable input. Please try again.")
-        except ValueError:
-            print("Unacceptable input. Please try again.")
-    return int(command_choice)

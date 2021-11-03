@@ -3,6 +3,8 @@ import collections
 import input
 
 
+
+
 class module:
     types = [
         "account",
@@ -214,6 +216,7 @@ class account(command):
         self.set_urlString()
         return self.get_urlString()
 
+
 ### START OF CONTRACTS MODULE COMMANDS ###
 class contracts(command):
 
@@ -237,6 +240,7 @@ class contracts(command):
         self.set_urlString()
         return self.get_urlString()
 
+
 ### START OF TRANSACTIONS MODULE COMMANDS ###
 class transactions(command):
 
@@ -259,6 +263,7 @@ class transactions(command):
         self.commandList[self.txHash] = str(input.getTxHash())
         self.set_urlString()
         return self.get_urlString()
+
 
 ### START OF BLOCKS MODULE COMMANDS ###
 class blocks(command):
@@ -291,6 +296,7 @@ class blocks(command):
         self.set_urlString()
         return self.get_urlString()
 
+
 ### START OF LOGS MODULE COMMANDS ###
 class logs(command):
 
@@ -310,6 +316,7 @@ class logs(command):
         # could put topic operator here but is not nessecary. I don't know what it would be used for so I left it out.
         self.set_urlString()
         return self.get_urlString()
+
 
 ### START OF GETH/PARITY PROXY MODULE COMMANDS ###
 class proxy(command):
@@ -432,6 +439,7 @@ class proxy(command):
         self.set_urlString()
         return self.get_urlString()
 
+
 ### START OF TOKENS MODULE COMMANDS ###
 class tokens(command):
 
@@ -452,9 +460,10 @@ class tokens(command):
     def GetERC20TokenAccountBalanceForTokenContractAddress(self):
         self.commandList[self.action] = 'tokenbalance'
         self.commandList[self.contract_address] = str(input.getContractAddress())
-        self.commandList[self.address]= str(input.getEthAddress())
+        self.commandList[self.address] = str(input.getEthAddress())
         self.set_urlString()
         return self.get_urlString()
+
 
 ### START OF GAS TRACKER MODULE COMMANDS ###
 class gastracker(command):
@@ -477,6 +486,7 @@ class gastracker(command):
         self.commandList[self.action] = 'gasoracle'
         self.set_urlString()
         return self.get_urlString()
+
 
 ### START OF STATS MODULE COMMANDS ###
 class stats(command):
