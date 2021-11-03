@@ -465,6 +465,7 @@ class gastracker(command):
         self.set_type(7)
         self.commandList[self.module] = module.get_type(self)
 
+    # Returns the estimated time, in seconds, for a transaction to be confirmed on the blockchain.
     def GetEstimationOfConfirmationTime(self):
         self.commandList[self.action] = 'gasestimate'
         self.commandList[self.gas_price] = str(input.getGasPrice())
