@@ -48,6 +48,16 @@ def userInput():
         elif command_choice == 9:
             passthrough = module0.GetListOfBlocksMinedByAddress()
             return passthrough
+        elif command_choice == 5:
+            passthrough = module0.GetInternalTransactionsByHash()
+        elif command_choice ==6:
+            passthrough = module0.GetInternalTransactionsByBlockRange()
+        elif command_choice == 7:
+            passthrough = module0.GetListOfERC20TokenTransferEventsByAddress()
+        elif command_choice == 8:
+            passthrough = module0.GetListOfERC721TokenTransferEventsByAddress()
+        elif command_choice == 9:
+            passthrough == module0.GetListOfBlocksMinedByAddress()
     elif module_choice == 2:
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",
