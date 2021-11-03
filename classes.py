@@ -1,7 +1,5 @@
 import collections
 
-import null as null
-
 import input
 
 
@@ -151,7 +149,7 @@ class account(command):
         return self.get_urlString()
 
     # Returns the list of internal transactions performed by an address, with optional pagination.
-    def GettListInternalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
+    def GetListInternalTransactionsByAddress(self, page="1", offset="10000", sort="asc"):
         self.commandList[self.action] = 'txlistinternal'
         self.commandList[self.address] = str(input.getEthAddress())
         self.commandList[self.start_block] = str(input.getStartBlock())
@@ -224,7 +222,6 @@ class contracts(command):
         module.__init__(self)
         self.set_type(1)
         self.commandList[self.module] = module.get_type(self)
-
 
     # Returns the Contract Application Binary Interface ( ABI ) of a verified smart contract.
     def GetContractABIForVerifiedContractSourceCodes(self):

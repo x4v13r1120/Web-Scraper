@@ -8,7 +8,7 @@ from ETL.load_data import load
 if __name__ == '__main__':
     extract()
     transform()
-    load()
+
 
 
 
