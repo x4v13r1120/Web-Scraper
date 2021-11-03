@@ -21,50 +21,85 @@ def userInput():
         }
 
         command_choice = getM0CommandChoice(conversion_dict)
+
         if command_choice == 1:
             passthrough = module0.GetEtherBalanceForSingleAddress()
-            return passthrough
         elif command_choice == 2:
             passthrough = module0.GetEtherBalanceForMultipleAddresses()
-            return passthrough
         elif command_choice == 3:
             passthrough = module0.GetlistNormalTransactionsByAddress()
-            return passthrough
         elif command_choice == 4:
             passthrough = module0.GettListInternalTransactionsByAddress()
-            return passthrough
         elif command_choice == 5:
             passthrough = module0.GetInternalTransactionsByHash()
-        elif command_choice ==6:
+        elif command_choice == 6:
             passthrough = module0.GetInternalTransactionsByBlockRange()
         elif command_choice == 7:
             passthrough = module0.GetListOfERC20TokenTransferEventsByAddress()
         elif command_choice == 8:
             passthrough = module0.GetListOfERC721TokenTransferEventsByAddress()
         elif command_choice == 9:
-            passthrough == module0.GetListOfBlocksMinedByAddress()
+            passthrough = module0.GetListOfBlocksMinedByAddress()
+
     elif module_choice == 2:
+        module1 = classes.contracts()
+
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",
             1: "Get Contract Source Code for Verified Contract Source Codes",
         }
+
+        command_choice = getM1CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module1.GetContractABIForVerifiedContractSourceCodes()
+        elif command_choice == 2:
+            passthrough = module1.GetContractSourceCodeForVerifiedContractSourceCodes()
+
     elif module_choice == 3:
+        module2 = classes.transactions()
+
         conversion_dict = {
             0: "Check Contract Execution Status",
             1: "Check Transaction Receipt Status",
         }
+
+        command_choice = getM2CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module2.CheckContractExecutionStatus()
+        elif command_choice == 2:
+            passthrough = module2.CheckTransactionReceiptStatus()
+
     elif module_choice == 4:
+        module3 = classes.blocks()
+
         conversion_dict = {
             0: "Get Block And Uncle Rewards by Block Number",
             1: "Get Estimated Block Countdown Time by Block Number",
             2: "Get Block Number by Timestamp"
         }
+
+        command_choice = getM3CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module3.GetBlockAndUncleRewardsByBlockno()
+        elif command_choice == 2:
+            passthrough = module3.GetEstimatedBlockCountdownTimeByBlockno()
+        elif command_choice == 3:
+            passthrough = module3.GetBlockNumberByTimestamp()
+
     elif module_choice == 5:
+        module4 = classes.logs()
+
         conversion_dict = {
             0: "Get Event Logs from block number ____ to 'latest' Block",
-            1: "Get Event Logs from block number ____ to block ____"
         }
+
+        command_choice = getM4CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module4.SampleLogAPIQueries()
+
     elif module_choice == 6:
+        module5 = classes.proxy()
+
         conversion_dict = {
             0: "Returns the number of most recent block",
             1: "Returns information about a block by block number",
@@ -84,26 +119,87 @@ def userInput():
             12: "Makes a call or transaction, which won't be added to the "
                 "blockchain and returns the used gas",
         }
+
+        command_choice = getM5CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module5.Eth_BlockNumber()
+        elif command_choice == 2:
+            passthrough = module5.Eth_GetBlockByNumber()
+        elif command_choice == 3:
+            passthrough = module5.Eth_GetUncleByBlockNumberAndIndex()
+        elif command_choice == 4:
+            passthrough = module5.Eth_GetBlockTransactionCountByNumber()
+        elif command_choice == 5:
+            passthrough = module5.Eth_getTransactionByHash()
+        elif command_choice == 6:
+            passthrough = module5.Eth_GetUncleByBlockNumberAndIndex()
+        elif command_choice == 7:
+            passthrough = module5.Eth_GetTransactionCount()
+        elif command_choice == 8:
+            passthrough = module5.Eth_getTransactionReceipt()
+        elif command_choice == 9:
+            passthrough = module5.Eth_Call()
+        elif command_choice == 10:
+            passthrough = module5.Eth_GetCode()
+        elif command_choice == 11:
+            passthrough = module5.Eth_GetStorageAt()
+        elif command_choice == 12:
+            passthrough = module5.Eth_GasPrice()
+        elif command_choice == 13:
+            passthrough = module5.Eth_EstimateGas()
+
     elif module_choice == 7:
+        module6 = classes.tokens()
+
         conversion_dict = {
             0: "Returns the current amount of an ERC-20 token in circulation",
             1: "Returns the current balance of an ERC-20 token of an address",
         }
+
+        command_choice = getM6CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module6.GetERC20TokenTotalSupplyByContractAddress()
+        elif command_choice == 2:
+            passthrough = module6.GetERC20TokenAccountBalanceForTokenContractAddress()
+
     elif module_choice == 8:
+        module7 = classes.gastracker()
+
         conversion_dict = {
             0: "Get Estimation of Confirmation Time",
             1: "Returns the current Safe, Proposed and Fast gas prices",
         }
+
+        command_choice = getM7CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module7.GetEstimationOfConfirmationTime()
+        elif command_choice == 2:
+            passthrough = module7.GetGasOracle()
+
     elif module_choice == 9:
+        module8 = classes.stats
+
         conversion_dict = {
             0: "Get total supply of ether",
-            1: "Get ether last price",
-            2: "Get ether nodes size",
-            3: "Get total node count",
+            1: "Get total supply of ether, ETH2 staking rewards and EIP1559 burnt fees stats",
+            2: "Get ether last price",
+            3: "Get ether nodes size",
+            4: "Get total node count",
         }
+
+        command_choice = getM8CommandChoice(conversion_dict)
+        if command_choice == 1:
+            passthrough = module8.GetTotalSupplyOfEther()
+        elif command_choice == 2:
+            passthrough = module8.GetTotalSupplyOfEther2()
+        elif command_choice == 3:
+            passthrough = module8.GetEtherLastPrice()
+        elif command_choice == 4:
+            passthrough = module8.GetEthereumNodesSize()
+        elif command_choice == 5:
+            passthrough = module8.GetTotalNodesCount()
+
     return passthrough
-
-
 ### GETTERS ###
 def getValueSentInTransaction():
     while True:

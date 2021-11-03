@@ -376,12 +376,13 @@ class proxy(command):
         self.set_urlString()
         return self.get_urlString()
 
+    # *********DOES NOT WORK**********
     # Submits a pre-signed transaction for broadcast to the Ethereum network.
-    def Eth_SendRawTransaction(self):
-        self.commandList[self.action] = 'Eth_sendRawTransaction'
-        self.commandList[self.hex] = str(input.getHex())
-        self.set_urlString()
-        return self.get_urlString()
+    # def Eth_SendRawTransaction(self):
+    #    self.commandList[self.action] = 'Eth_sendRawTransaction'
+    #    self.commandList[self.hex] = str(input.getHex())
+    #    self.set_urlString()
+    #    return self.get_urlString()
 
     # Returns the receipt of a transaction by transaction hash.
     def Eth_getTransactionReceipt(self):
@@ -473,6 +474,7 @@ class gastracker(command):
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the current Safe, Proposed and Fast gas prices.
     def GetGasOracle(self):
         self.commandList[self.action] = 'gasoracle'
         self.set_urlString()
@@ -487,21 +489,25 @@ class stats(command):
         self.set_type(8)
         self.commandList[self.module] = module.get_type(self)
 
+    # Returns the current amount of Ether in circulation.
     def GetTotalSupplyOfEther(self):
         self.commandList[self.action] = 'ethsupply'
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the current amount of Ether in circulation, ETH2 Staking rewards and EIP1559 burnt fees statistics.
     def GetTotalSupplyOfEther2(self):
         self.commandList[self.action] = 'ethsupply2'
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the latest price of 1 ETH.
     def GetEtherLastPrice(self):
         self.commandList[self.action] = 'ethprice'
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the size of the Ethereum blockchain, in bytes, over a date range.
     def GetEthereumNodesSize(self, clienttype="geth", syncmode="default", sort="asc"):
         self.commandList[self.action] = 'chainsize'
         self.commandList[self.start_date] = str(input.getStartDate())
@@ -512,6 +518,7 @@ class stats(command):
         self.set_urlString()
         return self.get_urlString()
 
+    # Returns the total number of discoverable Ethereum nodes.
     def GetTotalNodesCount(self):
         self.commandList[self.action] = 'nodecount'
         self.set_urlString()
