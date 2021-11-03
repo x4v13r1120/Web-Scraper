@@ -13,8 +13,8 @@ def userInput():
             1: "Get Ether Balance for Multiple Addresses in a Single Call",
             2: "Get a list of Normal Transactions By Address",
             3: "Get a list of internal transactions by address",
-            4: "Get 'Internal Transactions' by Transaction Hash",
-            5: "Get internal transactions by block range",
+            4: "Get Internal Transactions by Transaction Hash",
+            5: "Get Internal transactions by block range",
             6: "Get a list of 'ERC20 - Token Transfer Events' by Address",
             7: "Get a list of 'ERC721 - Token Transfer Events' by Address",
             8: "Get list of Blocks Mined by Address"
@@ -31,8 +31,33 @@ def userInput():
             passthrough = module0.GetlistNormalTransactionsByAddress()
             return passthrough
         elif command_choice == 4:
-            passthrough = module0.GettListInternalTransactionsByAddress()
+            passthrough = module0.GetListInternalTransactionsByAddress()
             return passthrough
+        elif command_choice == 5:
+            passthrough = module0.GetInternalTransactionsByHash()
+            return passthrough
+        elif command_choice == 6:
+            passthrough = module0.GetInternalTransactionsByBlockRange()
+            return passthrough
+        elif command_choice == 7:
+            passthrough = module0.GetListOfERC20TokenTransferEventsByAddress()
+            return passthrough
+        elif command_choice == 8:
+            passthrough = module0.GetListOfERC721TokenTransferEventsByAddress()
+            return passthrough
+        elif command_choice == 9:
+            passthrough = module0.GetListOfBlocksMinedByAddress()
+            return passthrough
+        elif command_choice == 5:
+            passthrough = module0.GetInternalTransactionsByHash()
+        elif command_choice ==6:
+            passthrough = module0.GetInternalTransactionsByBlockRange()
+        elif command_choice == 7:
+            passthrough = module0.GetListOfERC20TokenTransferEventsByAddress()
+        elif command_choice == 8:
+            passthrough = module0.GetListOfERC721TokenTransferEventsByAddress()
+        elif command_choice == 9:
+            passthrough == module0.GetListOfBlocksMinedByAddress()
     elif module_choice == 2:
         conversion_dict = {
             0: "Get Contract ABI for Verified Contract Source Code",
