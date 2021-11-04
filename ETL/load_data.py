@@ -25,6 +25,7 @@ def load(command_choice):
             ethdata.append(value)
     for value in keys.keys():
         table.append(value)
+
     print(SQLStatement().buildSqlStatement(command_choice))
     # conn.execute(SQLStatement().buildSqlStatement())
     conn.commit()
@@ -34,15 +35,16 @@ def load(command_choice):
 
 class SQLStatement:
     PREFIX = 'INSERT INTO'
-    AccountModuleTableNames = [
-        'account',
-        'BlocksMinedByAddress',
-        'TransactionByHash',
+    AccountModuleTableNames = {
+        'Account',
+        'TransactionsByAddress',
         'InternalTransactionsByAddress',
+        'TransactionByHash',
         'TransferErc20',
         'TransferErc721',
-        'TransactionsByAddress'
-    ]
+        'BlocksMinedByAddress'
+
+}
     SUFFIX = 'VALUES'
 
     def __init__(self):
