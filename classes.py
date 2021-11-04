@@ -3,6 +3,10 @@ import collections
 import input
 
 
+class user:
+    def __init__(self):
+        self.module_choice = input.module_choice
+        self.command_choice = input.command_choice
 
 
 class module:
