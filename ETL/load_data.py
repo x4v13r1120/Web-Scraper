@@ -1,7 +1,6 @@
 import json
 import sqlite3
 
-
 conn = sqlite3.connect('data/ethData')
 c = conn.cursor()
 
@@ -25,7 +24,6 @@ def load(command_choice):
             ethdata.append(value)
     for value in keys.keys():
         table.append(value)
-
     print(SQLStatement().buildSqlStatement(command_choice))
     # conn.execute(SQLStatement().buildSqlStatement())
     conn.commit()
@@ -35,7 +33,7 @@ def load(command_choice):
 
 class SQLStatement:
     PREFIX = 'INSERT INTO'
-    AccountModuleTableNames = {
+    AccountModuleTableNames = [
         'Account',
         'TransactionsByAddress',
         'InternalTransactionsByAddress',
@@ -44,14 +42,27 @@ class SQLStatement:
         'TransferErc721',
         'BlocksMinedByAddress'
 
-}
+    ]
     SUFFIX = 'VALUES'
 
     def __init__(self):
         self.sqlString = ''
 
-    def buildSqlStatement(self, command_choice):
-        self.sqlString = self.PREFIX + ' ' + self.AccountModuleTableNames[command_choice] + \
+    def buildSqlStatement(self, x):
+        self.sqlString = self.PREFIX + ' ' + get_choice(x) + \
                          '(' + ','.join(val if val else '' for val in table) + ')' + self.SUFFIX + '(' \
                          + ','.join('?' for val in table) + ')'
         return self.sqlString
+
+
+def get_choice(x):
+    switcher = {
+        1 or 2: SQLStatement.AccountModuleTableNames[0],
+        4 or 6: SQLStatement.AccountModuleTableNames[2],
+        3: SQLStatement.AccountModuleTableNames[1],
+        5: SQLStatement.AccountModuleTableNames[3],
+        7: SQLStatement.AccountModuleTableNames[4],
+        8: SQLStatement.AccountModuleTableNames[5],
+        9: SQLStatement.AccountModuleTableNames[6]
+    }
+    return switcher.get(x, "invalid")
