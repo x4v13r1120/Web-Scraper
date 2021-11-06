@@ -33,7 +33,7 @@ def getGasPricePaid():
 def getGasProvided():
     while True:
         gasProvided = str(input(
-            "Please enter gas provided"))  # address for testing = 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+            "Please enter gas provided"))  # address for testing = 0x5f5e0ff
         try:
             if gasProvided.isalnum():
                 return gasProvided
@@ -158,10 +158,15 @@ def getContractAddress():
 
 
 def getBlockNo():
-    try:
-        blockno = int(input("Please enter Block Number."))  # block for testing = 216540
-    except ValueError:
-        print("Unacceptable input. Please try again.")
+    while True:
+        blockno = str(input("Please enter Block Number."))  # block for testing = 216540
+        try:
+            if blockno.isdecimal():
+                return blockno
+            else:
+                print("Unacceptable input. Please try again.")
+        except ValueError:
+            print("Unacceptable input. Please try again.")
     return blockno
 
 
@@ -297,7 +302,7 @@ def getM0CommandChoice(module_dict):
                                f"2.{module_dict[1]}\n3.{module_dict[2]}\n"
                                f"4.{module_dict[3]}\n5.{module_dict[4]}\n"
                                f"6.{module_dict[5]}\n7.{module_dict[6]}\n"
-                               f"8.{module_dict[7]}\n9.{module_dict[8]}\n")
+                               f"8.{module_dict[7]}\n")
         try:
             val = int(command_choice)
             if val >= 1 and val <= 9:
@@ -448,15 +453,14 @@ module_choice = getModuleChoice()
 def getCommandChoice():
     command_choice = None
     module_dict1 = {
-        0: "Get Ether Balance for a Single Address",
-        1: "Get Ether Balance for Multiple Addresses in a Single Call",
-        2: "Get a list of Normal Transactions By Address",
-        3: "Get a list of internal transactions by address",
-        4: "Get 'Internal Transactions' by Transaction Hash",
-        5: "Get internal transactions by block range",
-        6: "Get a list of 'ERC20 - Token Transfer Events' by Address",
-        7: "Get a list of 'ERC721 - Token Transfer Events' by Address",
-        8: "Get list of Blocks Mined by Address"
+        0: "Get Ether Balance for a Single or Multiple Addresses in a Single Call",
+        1: "Get a list of Normal Transactions By Address",
+        2: "Get a list of internal transactions by address",
+        3: "Get 'Internal Transactions' by Transaction Hash",
+        4: "Get internal transactions by block range",
+        5: "Get a list of 'ERC20 - Token Transfer Events' by Address",
+        6: "Get a list of 'ERC721 - Token Transfer Events' by Address",
+        7: "Get list of Blocks Mined by Address"
     }
     module_dict2 = {
         0: "Get Contract ABI for Verified Contract Source Code",
@@ -533,22 +537,20 @@ def userInput():
     if module_choice == 1:
         module0 = classes.account()
         if command_choice == 1:
-            passthrough = module0.GetEtherBalanceForSingleAddress()
+            passthrough = module0.GetEtherBalanceForAddresses()
         elif command_choice == 2:
-            passthrough = module0.GetEtherBalanceForMultipleAddresses()
-        elif command_choice == 3:
             passthrough = module0.GetlistNormalTransactionsByAddress()
-        elif command_choice == 4:
+        elif command_choice == 3:
             passthrough = module0.GetListInternalTransactionsByAddress()
-        elif command_choice == 5:
+        elif command_choice == 4:
             passthrough = module0.GetInternalTransactionsByHash()
-        elif command_choice == 6:
+        elif command_choice == 5:
             passthrough = module0.GetInternalTransactionsByBlockRange()
-        elif command_choice == 7:
+        elif command_choice == 6:
             passthrough = module0.GetListOfERC20TokenTransferEventsByAddress()
-        elif command_choice == 8:
+        elif command_choice == 7:
             passthrough = module0.GetListOfERC721TokenTransferEventsByAddress()
-        elif command_choice == 9:
+        elif command_choice == 8:
             passthrough = module0.GetListOfBlocksMinedByAddress()
 
     elif module_choice == 2:

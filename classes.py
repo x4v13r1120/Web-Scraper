@@ -126,16 +126,8 @@ class account(command):
         self.set_type(0)
         self.commandList[self.module] = module.get_type(self)
 
-    # Returns the Ether balance of a given address.
-    def GetEtherBalanceForSingleAddress(self):
-        self.commandList[self.action] = 'balance'
-        self.commandList[self.tag] = 'latest'
-        self.commandList[self.address] = input.getEthAddress()
-        self.set_urlString()
-        return self.get_urlString()
-
     # Returns the balance of the accounts from a list of addresses.
-    def GetEtherBalanceForMultipleAddresses(self):
+    def GetEtherBalanceForAddresses(self):
         self.commandList[self.action] = 'balancemulti'
         self.commandList[self.tag] = 'latest'
         self.commandList[self.address] = input.getMultipleEthAddress()
@@ -438,7 +430,7 @@ class proxy(command):
         self.commandList[self.data] = str(input.getHashData())
         self.commandList[self.to] = str(input.getEthAddress())
         self.commandList[self.value] = str(input.getValueSentInTransaction())
-        self.commandList[self.gas_price] = str(input.getGasPrice())
+        self.commandList[self.gas_price] = str(input.getGasPricePaid())
         self.commandList[self.gas] = str(input.getGasProvided())
         self.set_urlString()
         return self.get_urlString()
