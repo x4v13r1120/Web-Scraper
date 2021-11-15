@@ -26,8 +26,7 @@ def load(command_choice):
             table.append(value)
         sql = SQLStatement().buildSqlStatement(command_choice)
         print(sql)
-        for keys in rawdata:
-            conn.execute(sql)
+        conn.execute(sql, ethdata,)
     conn.commit()
     conn.close()
     print("Data successfully loaded into database!!!")
@@ -56,6 +55,7 @@ class SQLStatement:
                          + self.SUFFIX + '(' \
                          + ','.join('?' for val in table) + ');'
         return self.sqlString
+
 
 
 def get_choice(x):
