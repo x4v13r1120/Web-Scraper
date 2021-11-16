@@ -1,33 +1,26 @@
 import json
 import sqlite3
+from collections import Counter
 
 conn = sqlite3.connect('data/ethData')
 c = conn.cursor()
 
-Keys = []
-Values = []
-
-
-def buildTableArguments(*args):
-    argument = ''
-    for x in args:
-        argument = x
-    Keys.append(argument)
-
 
 def load(command_choice):
+    Keys = []
+    Values = []
     with open("data/cleaned_data.json") as infile:
         rawdata = json.load(infile)
         ethdata = {}
-        for _ in rawdata:
-            ethdata.update(_)
-            for key, value in ethdata.items():
-                Keys.append(key)
-                Values.append(value)
+        for raw in rawdata:
+            ethdata.update(raw)
+            for j in ethdata.values():
+                Values.append(j)
+        for i in ethdata.keys():
+            Keys.append(i)
         for _ in ethdata:
-            for _ in Keys:
-                sql = SQLStatement().buildSqlStatement(command_choice)
-                conn.execute(sql, Values)
+            sql = SQLStatement().buildSqlStatement(command_choice, Keys, Values)
+            #print(sql)
     conn.commit()
     conn.close()
     print("Data successfully loaded into database!!!")
@@ -50,13 +43,12 @@ class SQLStatement:
     def __init__(self):
         self.sqlString = ''
 
-    def buildSqlStatement(self, x):
+    def buildSqlStatement(self, x, Keys, Values):
         self.sqlString = self.PREFIX + ' ' + get_choice(x) + \
                          '(' + ','.join(f"'{val}'" if val else '' for val in Keys) + ')' \
                          + self.SUFFIX + '(' \
-                         + ','.join('?' for _ in Keys) + ');'
+                         + ','.join(f"'{val}'" if val else '' for val in Values) + ');'
         return self.sqlString
-
 
 
 def get_choice(x):
