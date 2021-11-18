@@ -7,20 +7,13 @@ c = conn.cursor()
 
 
 def load(command_choice):
-    Keys = []
-    Values = []
     with open("data/cleaned_data.json") as infile:
         rawdata = json.load(infile)
         ethdata = {}
         for raw in rawdata:
             ethdata.update(raw)
-            for j in ethdata.values():
-                Values.append(j)
-        for i in ethdata.keys():
-            Keys.append(i)
-        for _ in ethdata:
-            sql = SQLStatement().buildSqlStatement(command_choice, Keys, Values)
-            #print(sql)
+            sql = SQLStatement().buildSqlStatement(command_choice, ethdata)
+            print(sql)
     conn.commit()
     conn.close()
     print("Data successfully loaded into database!!!")
@@ -43,11 +36,11 @@ class SQLStatement:
     def __init__(self):
         self.sqlString = ''
 
-    def buildSqlStatement(self, x, Keys, Values):
+    def buildSqlStatement(self, x, ethdata):
         self.sqlString = self.PREFIX + ' ' + get_choice(x) + \
-                         '(' + ','.join(f"'{val}'" if val else '' for val in Keys) + ')' \
+                         '(' + ','.join(f"'{val}'" if val else '' for val in ethdata.keys()) + ')' \
                          + self.SUFFIX + '(' \
-                         + ','.join(f"'{val}'" if val else '' for val in Values) + ');'
+                         + ','.join(f"{val}" if val else '' for val in ethdata.values()) + ');'
         return self.sqlString
 
 
