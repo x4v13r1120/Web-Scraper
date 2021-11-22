@@ -13,7 +13,6 @@ def load(command_choice):
         for raw in rawdata:
             ethdata.update(raw)
             sql = SQLStatement().buildSqlStatement(command_choice, ethdata)
-            print(sql)
             conn.execute(sql)
     conn.commit()
     conn.close()
