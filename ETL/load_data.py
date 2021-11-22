@@ -14,6 +14,7 @@ def load(command_choice):
             ethdata.update(raw)
             sql = SQLStatement().buildSqlStatement(command_choice, ethdata)
             print(sql)
+            conn.execute(sql)
     conn.commit()
     conn.close()
     print("Data successfully loaded into database!!!")
@@ -40,7 +41,7 @@ class SQLStatement:
         self.sqlString = self.PREFIX + ' ' + get_choice(x) + \
                          '(' + ','.join(f"'{val}'" if val else '' for val in ethdata.keys()) + ')' \
                          + self.SUFFIX + '(' \
-                         + ','.join(f"{val}" if val else '' for val in ethdata.values()) + ');'
+                         + ','.join(f"'{val}'" for val in ethdata.values()) + ');'
         return self.sqlString
 
 
