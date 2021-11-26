@@ -1,10 +1,10 @@
 import json
-import requests
+from requests import get
 
 
 def extract(x):
     # make request using command from user input
-    response = requests.get(x)
+    response = get(x)
     address_content = response.json()
     result = address_content.get("result")
     # dump data

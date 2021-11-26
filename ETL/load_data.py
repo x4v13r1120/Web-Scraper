@@ -1,6 +1,6 @@
 import json
 import sqlite3
-from collections import Counter
+
 
 conn = sqlite3.connect('data/ethData')
 c = conn.cursor()

@@ -1,6 +1,3 @@
-import json
-
-
 # Code from Josiah Greenwell of FGCU
 
 def transform():
